@@ -1,0 +1,41 @@
+Modelwright End User License Agreement
+Version 0.1.0 · October 2026
+
+Please read this agreement before installing or using Modelwright (the "Software"). By installing, copying or otherwise using the Software you agree to be bound by it; if you do not agree, do not install or use the Software and delete every copy you have obtained.
+
+1. Grant of license
+Provided you comply with this agreement, the copyright holder of the Software ("we") grants you a non-exclusive, non-transferable, revocable license to install and use the Software on devices you own or control, for your own game or content development. The Software is licensed, not sold; all rights not expressly granted are reserved.
+
+2. Restrictions
+Except where the law expressly permits it, you may not:
+1. decompile, disassemble or reverse engineer the Software, or otherwise attempt to derive its source code;
+2. copy (other than for backup), rent, lend, sell, sublicense, publicly transmit or distribute the Software;
+3. modify the Software, create derivative works of it, or circumvent its integrity checks or other technical measures;
+4. remove or obscure any copyright, trademark or other proprietary notice in the Software or its documentation;
+5. use the Software for any purpose that violates applicable law or infringes the rights of others.
+
+3. Third-party components
+The Software includes third-party open-source components and an open-source image segmentation model. They are provided under their own licenses, listed in the THIRD-PARTY-NOTICES.txt file distributed with the Software (also shown in Settings → Language & about → Third-party notices). Nothing in this agreement limits the rights those licenses grant you.
+
+4. Cloud services and fees
+The Software does not generate 3D models itself. Generation is performed by third-party cloud services you choose and configure (for example Tripo, Meshy or Tencent Hunyuan), using your own accounts and API keys. Fees are settled directly between you and the provider; the Software collects no fees and is not responsible for a provider's availability, prices, output quality or terms. You must comply with the terms of the providers you use and must hold the rights needed for the text, images and other content you submit to them.
+
+5. Data and privacy
+Your API keys are stored on your machine, encrypted with the operating system's facilities; your models, images, settings and logs are stored on your machine in locations you choose. The Software has no server of its own and neither collects nor uploads your data; content is sent to a provider only when you start an operation that requires it.
+
+6. Disclaimer of warranty
+The Software is provided "as is", without warranty of any kind, express or implied, including without limitation warranties of merchantability, fitness for a particular purpose, non-infringement or uninterrupted availability. AI-generated results may be wrong or not what you expected; their ownership and permitted use depend on your agreement with the provider and on applicable law. Review generated content before relying on it.
+
+7. Limitation of liability
+To the maximum extent permitted by applicable law, we are not liable for any indirect, incidental, special, punitive or consequential damages (including lost profits, lost data, business interruption or cloud-service charges) arising from the use of or inability to use the Software. In no event does our total liability under this agreement exceed the amount you actually paid for the Software (zero if it was obtained free of charge).
+
+8. Updates and termination
+We may release updated versions of the Software, which may come with a revised agreement. This license terminates automatically if you breach this agreement; on termination you must stop using the Software and delete every copy. Sections 2 to 7 survive termination.
+
+9. Governing law and disputes
+This agreement is governed by the laws of the People's Republic of China. Disputes arising from it shall first be resolved through friendly negotiation; failing that, they shall be submitted to the competent people's court at the copyright holder's domicile.
+
+10. Contact
+Questions, feedback and rights notices concerning the Software can be submitted through the Software's release page.
+
+Modelwright and its marks belong to the copyright holder. Tripo, Meshy, Tencent Hunyuan, Unity and other names mentioned are trademarks of their respective owners and are used only to describe compatibility.
