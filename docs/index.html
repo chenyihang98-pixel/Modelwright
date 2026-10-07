@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modelwright · 模匠 — 一键生成 3D 模型，直接进游戏引擎</title>
+  <meta name="description" content="Modelwright（模匠）：面向游戏开发者的 AI 3D 生成工作台。文字或图片进，游戏可用的模型出，直接送进 Unity 工程。Windows 桌面应用，使用你自己的云端 API 密钥。">
+  <link rel="icon" href="icon.png">
+  <style>
+    :root {
+      --bg: #0b0c0f; --raised: #121419; --panel: #161920; --line: #262a33; --fg: #e8eaf0; --muted: #9aa1ad; --subtle: #6b7280;
+      --accent: #7c5cff; --cyan: #22d3ee; --ok: #34d399;
+      --radius: 14px; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Roboto, sans-serif; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header.top { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,12,15,.8); border-bottom: 1px solid var(--line); }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; color: var(--fg); }
+    .brand .zh { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 20px; }
+    .brand .en { color: var(--muted); font-weight: 500; font-size: 13px; }
+    nav.links { display: flex; gap: 18px; font-size: 14px; }
+    nav.links a { color: var(--muted); }
+    nav.links a:hover { color: var(--fg); text-decoration: none; }
+    .hero { padding: 72px 0 40px; text-align: center; background: radial-gradient(60% 50% at 50% 0%, rgba(124,92,255,.22), transparent 70%); }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -.02em; }
+    .hero h1 em { font-style: normal; white-space: nowrap; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lead { color: var(--muted); font-size: 18px; max-width: 760px; margin: 0 auto 28px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; border: 1px solid var(--line); background: var(--raised); color: var(--fg); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #5b8cff); border-color: transparent; color: #fff; }
+    .btn:hover { text-decoration: none; filter: brightness(1.08); }
+    .fine { color: var(--subtle); font-size: 13px; }
+    .shot { margin: 36px auto 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); max-width: 1000px; }
+    .shot img { display: block; width: 100%; height: auto; }
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    section h2 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+    section p.sub { color: var(--muted); margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card .n { display: inline-block; width: 28px; height: 28px; border-radius: 8px; background: rgba(124,92,255,.18); color: var(--accent); text-align: center; line-height: 28px; font-weight: 700; margin-bottom: 10px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { padding: 12px 14px; font-size: 14px; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    code { font-family: ui-monospace, Consolas, "Cascadia Mono", monospace; font-size: 13px; background: var(--raised); padding: 2px 6px; border-radius: 6px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .two h3 { margin: 0 0 10px; font-size: 17px; }
+    ul.tight { margin: 0; padding-left: 18px; color: var(--muted); }
+    ul.tight li { margin: 6px 0; }
+    .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-right: 6px; }
+    .tag.ok { color: var(--ok); border-color: rgba(52,211,153,.4); }
+    .tag.warn { color: #fbbf24; border-color: rgba(251,191,36,.4); }
+    footer { padding: 36px 0 60px; color: var(--subtle); font-size: 13px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav.links { display: none; } .hero { padding-top: 48px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#"><img src="icon.png" alt="" width="28" height="28"><span class="zh">模匠</span><span class="en">Modelwright</span></a>
+      <nav class="links">
+        <a href="#features">能做什么</a>
+        <a href="#shots">截图</a>
+        <a href="#start">第一次使用</a>
+        <a href="#unity">连接 Unity</a>
+        <a href="#status">验证情况</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
+        <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.0/Modelwright-Setup-0.1.0-x64.exe">下载安装版 0.1.0</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.0/Modelwright-Portable-0.1.0-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.0/Modelwright-0.1.0-win.zip">免安装 zip</a>
+        </div>
+        <p class="fine">Windows 10 / 11，64 位 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
+        <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>云端生成之外的一切，都在本地做好</h2>
+        <p class="sub">生成只是一步。模匠把这一步前后的工作做成一条流水线，每一步都能看、能改、能验收。</p>
+        <div class="grid">
+          <div class="card"><span class="n">1</span><h3>准备输入</h3><p>图片自动抠图、构图、尺寸适配；拆分三视图 / 四视图设定图；提示词优化（离线模板或你自己的大模型）；可先出概念图再生成 3D；批量一行一个描述。</p></div>
+          <div class="card"><span class="n">2</span><h3>预设与预检</h3><p>14 种资产类型 × 7 种目标平台 × 5 种风格，自动换算面数预算、贴图尺寸、LOD、碰撞体、轴心与真实尺寸；花积分之前逐项预检图片、提示词、参数、费用与余额。</p></div>
+          <div class="card"><span class="n">3</span><h3>云端生成</h3><p>Tripo（中国区 / 国际区自动识别）、Meshy、腾讯混元生 3D，用你自己的密钥；内置离线演示服务，无需密钥即可走通整个流程。计费请求绝不自动重发。</p></div>
+          <div class="card"><span class="n">4</span><h3>本地后处理（免费）</h3><p>减面到预算、LOD 链、碰撞体、轴心与尺寸校正、Unity 贴图打包；资产页可多选批量处理，一次把一批道具从 PC 预算改成移动端预算。</p></div>
+          <div class="card"><span class="n">5</span><h3>三道关卡验收</h3><p>生成后、后处理后、导入 Unity 后各一道，给出 A–D 等级，每一项都说明问题和处理办法；Unity 那一关由插件回传的真实导入结果判定。</p></div>
+          <div class="card"><span class="n">6</span><h3>直达 Unity</h3><p>一键写入工程的 <code>Assets/Modelwright/</code>；装了插件会自动建材质、带 LODGroup 与碰撞体的预制体并放进场景。桌面端和插件只走本机回环地址。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shots">
+      <div class="wrap">
+        <h2>截图</h2>
+        <p class="sub">界面为简体中文，可切换英文。</p>
+        <div class="gallery">
+          <figure><img src="screenshots/01-onboarding.png" alt="首次引导" loading="lazy"><figcaption>首次引导：选生成服务、连接 Unity，也可以随时跳过</figcaption></figure>
+          <figure><img src="screenshots/03-workspace.png" alt="工作台" loading="lazy"><figcaption>工作台：PBR / 白模 / 法线 / UV 显示，模型信息与资产列表</figcaption></figure>
+          <figure><img src="screenshots/04-generate-preflight.png" alt="预检" loading="lazy"><figcaption>花积分之前逐项预检：提示词、预设、参数、费用</figcaption></figure>
+          <figure><img src="screenshots/05-postprocess.png" alt="后处理" loading="lazy"><figcaption>本地后处理：减面、LOD、碰撞体，处理前后对比与验收清单</figcaption></figure>
+          <figure><img src="screenshots/06-assets.png" alt="资产库" loading="lazy"><figcaption>资产库：分类、评级、PBR / 骨骼 / LOD 标记、已发送标记</figcaption></figure>
+          <figure><img src="screenshots/07-settings-providers.png" alt="生成服务" loading="lazy"><figcaption>生成服务：填入你自己的密钥，自动识别区域，余额可见</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <h2>第一次使用</h2>
+        <div class="two">
+          <div>
+            <h3>四步走通流程</h3>
+            <ul class="tight">
+              <li>打开应用进入引导：选择生成服务。还没有密钥就选 <b>演示（离线）</b>——返回内置示例模型（带「示例」标记），用来走通预设、预检、后处理、验收、送进 Unity。</li>
+              <li>（可选）连接 Unity：应用会列出 Unity Hub / 团结 Hub 里的工程，也可以粘贴工程路径；点「安装插件」。</li>
+              <li>在首页把一张图片拖进「拖入图片，一键生成并送进 Unity」，或者输入一句话描述。</li>
+              <li>结果出现在首页和「资产」页；在「工作台」里查看网格、贴图、骨骼，做后处理、导出或发送到 Unity。</li>
+            </ul>
+          </div>
+          <div>
+            <h3>配置真实的生成服务</h3>
+            <table>
+              <tr><th>服务</th><th>获取密钥</th></tr>
+              <tr><td>Tripo（推荐）</td><td><a href="https://developers.tripo3d.com">中国区</a> / <a href="https://developers.tripo3d.ai">国际区</a>，填入后自动识别</td></tr>
+              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>（需付费方案）</td></tr>
+              <tr><td>腾讯混元生 3D</td><td><a href="https://cloud.tencent.com/document/product/1804/126325">腾讯云</a>（API Key 或 SecretId + SecretKey）</td></tr>
+            </table>
+            <p class="fine" style="margin-top:12px">密钥只写入、不回显，由 Windows 加密保存在本机；界面、日志和任务记录里都不会出现密钥原文。网络默认跟随系统代理。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="unity">
+      <div class="wrap">
+        <h2>连接 Unity</h2>
+        <p class="sub">支持 Unity 2022.3 LTS、团结引擎 1.x、Unity 6；Built-in / URP / HDRP。发送之后得到什么，取决于工程当时的状态：</p>
+        <table>
+          <tr><th>工程状态</th><th>结果</th></tr>
+          <tr><td>已装插件，编辑器开着（已连接）</td><td>立即导入：按渲染管线生成材质，做好带 LOD 和碰撞体的预制体，放进场景，并把导入结果回传，验收清单的「Unity 内」一关据此判定</td></tr>
+          <tr><td>已装插件，编辑器没开</td><td>文件先写进工程，下次打开或刷新时由插件完整导入（不放进场景，没有回执）</td></tr>
+          <tr><td>没装插件</td><td>只写入文件到 <code>Assets/Modelwright/</code>，由 Unity 按默认方式导入，没有预制体</td></tr>
+        </table>
+        <p class="fine" style="margin-top:12px">GLB 需要 glTF 导入器（glTFast）：工程里没有时，应用会让你选择「安装 glTFast（推荐）／云端转成 FBX／本地导出 OBJ」。带骨骼的模型在装了 glTFast 的工程里可以直接按 GLB 发送（Generic 骨架，不花积分）。</p>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="wrap">
+        <h2>验证情况与已知限制</h2>
+        <div class="two">
+          <div>
+            <h3><span class="tag ok">已验证</span></h3>
+            <ul class="tight">
+              <li>真实应用的自动化测试覆盖各个页面，另有七段完整的用户旅程和全部界面在两种窗口尺寸、两种语言下的巡检。</li>
+              <li>付费流程用本机模拟的接口逐请求计数：一次提交（包括双击、重试、批量）只发出应有的那些计费请求。</li>
+              <li>三个发布文件由同一份源码构建；安装目录和便携版通过自检（抠图引擎、网格管线、Draco 解码、第三方许可清单）。</li>
+              <li>用假密钥访问各服务商真实接口：地址、TLS、鉴权失败识别正确。</li>
+            </ul>
+          </div>
+          <div>
+            <h3><span class="tag warn">尚未验证</span></h3>
+            <ul class="tight">
+              <li><b>真实密钥的真实生成</b>：云端生成只对照各家公开文档实现并用模拟服务测试过。第一次请用少量积分试一次最便宜的生成。</li>
+              <li><b>真实的 Unity / 团结编辑器</b>：插件通过了离线编译检查、协议用模拟编辑器测试过，尚未在真实编辑器里验收。</li>
+              <li>安装程序自身的安装 / 卸载流程没有实际运行过；它包装的程序目录与便携版相同。</li>
+            </ul>
+            <p class="fine" style="margin-top:14px">已知限制：仅 Windows；只完整支持 Unity；本地后处理不处理带骨骼的模型和只有 FBX 的版本；拼音转写的多音字与超长描述有取舍。完整说明见 <a href="https://github.com/chenyihang98-pixel/Modelwright#验证情况与已知限制">README</a>。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Modelwright（模匠）0.1.0 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
+    </div>
+  </footer>
+</body>
+</html>
