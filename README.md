@@ -9,6 +9,7 @@
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">下载最新版</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/">介绍页</a> ·
+  <a href="https://www.bilibili.com/video/BV1VMHU6mEQt">演示视频</a> ·
   <a href="#第一次使用">第一次使用</a> ·
   <a href="#连接-unity">连接 Unity</a> ·
   <a href="#验证情况与已知限制">验证情况</a> ·
@@ -18,6 +19,12 @@
 文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成本身由云端服务完成（你自己的 API 密钥），本机不需要下载任何大模型权重；换一台电脑，装上应用、填入密钥即可继续工作。
 
 > 当前版本 **0.1.1**（2026-10-08）：修复了 Unity 6 下贴图丢失的问题，加入自动更新。哪些经过了验证、哪些还没有，见文末「验证情况与已知限制」；改动清单见 [RELEASE-NOTES.md](RELEASE-NOTES.md)。
+
+## 演示视频
+
+[![【免费工具】打破次元壁，让纸片人站进 Unity](docs/bilibili-cover.png)](https://www.bilibili.com/video/BV1VMHU6mEQt)
+
+一张 192 × 208 像素的桌宠精灵图，在模匠里生成、本地后处理、验收，再一键送进 Unity 6 的场景，全程实录（1 分 46 秒）。B 站：<https://www.bilibili.com/video/BV1VMHU6mEQt>
 
 ## 下载
 
