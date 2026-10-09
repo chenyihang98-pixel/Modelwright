@@ -87,9 +87,9 @@
         <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
         <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.2/Modelwright-Setup-0.1.2-x64.exe">下载安装版 0.1.2</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.2/Modelwright-Portable-0.1.2-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.2/Modelwright-0.1.2-win.zip">免安装 zip</a>
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.3/Modelwright-Setup-0.1.3-x64.exe">下载安装版 0.1.3</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.3/Modelwright-Portable-0.1.3-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.3/Modelwright-0.1.3-win.zip">免安装 zip</a>
         </div>
         <p class="fine">Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
         <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
@@ -153,8 +153,8 @@
             <table>
               <tr><th>服务</th><th>获取密钥</th></tr>
               <tr><td>Tripo（推荐）</td><td><a href="https://developers.tripo3d.com">中国区</a> / <a href="https://developers.tripo3d.ai">国际区</a>，填入后自动识别</td></tr>
-              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>（需付费方案）</td></tr>
-              <tr><td>腾讯混元生 3D</td><td><a href="https://cloud.tencent.com/document/product/1804/126325">腾讯云</a>（API Key 或 SecretId + SecretKey）</td></tr>
+              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>（会员制：先订阅 Pro 会员，API 才可用）</td></tr>
+              <tr><td>腾讯混元生 3D（TokenHub）</td><td><a href="https://console.cloud.tencent.com/tokenhub/apikey">腾讯云 TokenHub</a>：「启用管理」按模型领取免费额度或开通后付费，「API Key 管理」创建 sk- 开头的 Key（地域选广州）；应用内有带截图的接入指引</td></tr>
             </table>
             <p class="fine" style="margin-top:12px">密钥只写入、不回显，由 Windows 加密保存在本机；界面、日志和任务记录里都不会出现密钥原文。网络默认跟随系统代理。</p>
           </div>
@@ -189,12 +189,13 @@
               <li>用假密钥访问各服务商真实接口：地址、TLS、鉴权失败识别正确。</li>
               <li><b>Tripo 真实密钥（中国区）</b>：图片生成成功；0.1.2 把「绑骨 → 动作」整条链逐项实测跑通——双足角色 v1.0 + 原生骨骼命名，idle / walk / run 等动作、多动作 FBX、原地播放全部成功，四足生物 v2.5 + 四足行走成功。</li>
               <li><b>Unity 6000.6.4f1 真实编辑器</b>（2026-10-08）：编辑器开着时安装插件、装 glTFast、自动连接、发送 GLB、生成材质 / 预制体并放进场景、回传结果；发现的两个问题已在 0.1.1 修复。2026-10-09 用 0.1.2 发送带动作的角色：Humanoid Avatar 有效，Animator 自动配好 idle / walk / run 三个动作。</li>
+              <li><b>Meshy 与混元真实密钥</b>（2026-10-09）：Meshy 跑通图生 3D → 绑骨 → 动作 → Unity；混元（TokenHub）跑通图生 3D → 绑骨 → 预设动作 / 文字描述动作 → 格式转换 → Unity。</li>
             </ul>
           </div>
           <div>
             <h3><span class="tag warn">尚未验证</span></h3>
             <ul class="tight">
-              <li><b>Meshy、混元的真实生成</b>：只对照公开文档实现并用模拟服务测试过。第一次请用少量积分试一次最便宜的生成。</li>
+              <li><b>Meshy、混元的其余接口</b>：贴图、重拓扑、多视图、文生 3D，以及混元的极速版、3.0 低模和国际站，仍只用模拟服务测试过。第一次请用少量积分试一次。</li>
               <li><b>Unity 2022.3 与团结引擎</b>：插件通过了离线编译检查，尚未在这两种真实编辑器里验收。</li>
               <li>安装程序的卸载流程没有实际运行过；安装版已在 Windows 11 上实际安装并运行。</li>
             </ul>
@@ -207,7 +208,7 @@
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.2 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Modelwright（模匠）0.1.3 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
       Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
     </div>
   </footer>
