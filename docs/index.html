@@ -87,9 +87,9 @@
         <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
         <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.4/Modelwright-Setup-0.1.4-x64.exe">下载安装版 0.1.4</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.4/Modelwright-Portable-0.1.4-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.4/Modelwright-0.1.4-win.zip">免安装 zip</a>
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.5/Modelwright-Setup-0.1.5-x64.exe">下载安装版 0.1.5</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.5/Modelwright-Portable-0.1.5-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.5/Modelwright-0.1.5-win.zip">免安装 zip</a>
         </div>
         <p class="fine">Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
         <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
@@ -110,8 +110,8 @@
         <h2>云端生成之外的一切，都在本地做好</h2>
         <p class="sub">生成只是一步。模匠把这一步前后的工作做成一条流水线，每一步都能看、能改、能验收。</p>
         <div class="grid">
-          <div class="card"><span class="n">1</span><h3>准备输入</h3><p>图片自动抠图、构图、尺寸适配；拆分三视图 / 四视图设定图；提示词优化（离线模板或你自己的大模型）；可先出概念图再生成 3D；批量一行一个描述。</p></div>
-          <div class="card"><span class="n">2</span><h3>预设与预检</h3><p>14 种资产类型 × 7 种目标平台 × 5 种风格，自动换算面数预算、贴图尺寸、LOD、碰撞体、轴心与真实尺寸；花积分之前逐项预检图片、提示词、参数、费用与余额。</p></div>
+          <div class="card"><span class="n">1</span><h3>准备输入</h3><p>图片自动抠图、构图、尺寸适配；拆分三视图 / 四视图设定图（任意网格、标签、特写框、地面线，自动判断视图方向归位）；一张正面图让概念图服务画出姿势一致的四视图；提示词优化（离线模板或你自己的大模型）；批量一行一个描述。</p></div>
+          <div class="card"><span class="n">2</span><h3>预设与预检</h3><p>14 种资产类型 × 8 种目标平台 × 5 种风格，自动换算面数预算、贴图尺寸、LOD、碰撞体、轴心与真实尺寸；「展示 / 影视级」一档直接要最高几何精度和 4K 贴图；花积分之前逐项预检图片、提示词、参数、费用与余额，相对视图镜像了会提醒并一键修复。</p></div>
           <div class="card"><span class="n">3</span><h3>云端生成</h3><p>Tripo（中国区 / 国际区自动识别）、Meshy、腾讯混元生 3D，用你自己的密钥；内置离线演示服务，无需密钥即可走通整个流程。计费请求绝不自动重发。</p></div>
           <div class="card"><span class="n">4</span><h3>本地后处理（免费）</h3><p>减面到预算、LOD 链、碰撞体、轴心与尺寸校正、Unity 贴图打包；资产页可多选批量处理，一次把一批道具从 PC 预算改成移动端预算。</p></div>
           <div class="card"><span class="n">5</span><h3>三道关卡验收</h3><p>生成后、后处理后、导入 Unity 后各一道，给出 A–D 等级，每一项都说明问题和处理办法；Unity 那一关由插件回传的真实导入结果判定。</p></div>
@@ -192,6 +192,7 @@
               <li><b>Tripo 真实密钥（中国区）</b>：图片生成成功；0.1.2 把「绑骨 → 动作」整条链逐项实测跑通——双足角色 v1.0 + 原生骨骼命名，idle / walk / run 等动作、多动作 FBX、原地播放全部成功，四足生物 v2.5 + 四足行走成功。</li>
               <li><b>Unity 6000.6.4f1 真实编辑器</b>（2026-10-08）：编辑器开着时安装插件、装 glTFast、自动连接、发送 GLB、生成材质 / 预制体并放进场景、回传结果；发现的两个问题已在 0.1.1 修复。2026-10-09 用 0.1.2 发送带动作的角色：Humanoid Avatar 有效，Animator 自动配好 idle / walk / run 三个动作。<b>2026-10-12 用 0.1.4 重新目视验收</b>：Tripo 绑骨 + 三个动作的角色送进 Unity 6 后进 Play 模式，待机 / 行走 / 奔跑都在原地正常播放、朝向正确——0.1.2 / 0.1.3 在 Unity 6 里一进 Play 角色就消失的问题已修。</li>
               <li><b>Meshy 与混元真实密钥</b>（2026-10-09）：Meshy 跑通图生 3D → 绑骨 → 动作 → Unity；混元（TokenHub）跑通图生 3D → 绑骨 → 预设动作 / 文字描述动作 → 格式转换 → Unity。这两条链只核对了 Unity 的回执，Play 模式还没有目视验收。</li>
+              <li><b>裙摆保形与大肥鱼全链路</b>（2026-10-12，0.1.5）：星璇在 Unity 6000.6.4f1 的 Play 模式里 idle / walk / run，裙子不再翻板（原地更新、新副本两条路径）；大肥鱼（DeepSeek 鲸鱼娘，社区角色）从三视图设定图到拆分归位、预检镜像修复、展示级生成、绑骨，验收 A；用一张正面图生成的 A 姿势四视图再生成一次，两只手都是干净的五指。</li>
             </ul>
           </div>
           <div>
@@ -201,6 +202,7 @@
               <li><b>混元动作版本在 Unity 里的蒙皮</b>：2026-10-12 发现混元动作 FBX 的绑定姿势与骨骼单位不一致，模型在 Unity 场景里被放大约 100 倍并扭曲；0.1.4 没有修，正在排查。Meshy 带动作版本的 Play 模式同样还没有目视验收。</li>
               <li><b>Unity 2022.3 与团结引擎</b>：插件通过了离线编译检查，尚未在这两种真实编辑器里验收。</li>
               <li>安装程序的卸载流程没有实际运行过；安装版已在 Windows 11 上实际安装并运行。</li>
+              <li><b>裙摆保形的边界</b>：没有布料碰撞，大腿抬得很高时膝盖会从裙摆穿出；裙下没有腿的空心长裙和头发不处理。二次元角色的眼睛会被生成服务雕成浅浅的凹陷（白模下可见），标准和超清几何都一样，下一版做本地面部平滑。</li>
             </ul>
             <p class="fine" style="margin-top:14px">已知限制：仅 Windows；只完整支持 Unity；本地后处理不处理带骨骼的模型和只有 FBX 的版本；拼音转写的多音字与超长描述有取舍。完整说明见 <a href="https://github.com/chenyihang98-pixel/Modelwright#验证情况与已知限制">README</a>。</p>
           </div>
@@ -211,7 +213,7 @@
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.4 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Modelwright（模匠）0.1.5 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
       Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
     </div>
   </footer>
