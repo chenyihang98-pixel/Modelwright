@@ -69,6 +69,10 @@ Windows 10 / 11，64 位。三种形式任选其一，从 [Releases](https://git
 | 花积分之前逐项预检：提示词、预设、参数、费用 | 本地后处理：减面、LOD、碰撞体，处理前后对比与验收清单 |
 | ![资产库](docs/screenshots/06-assets.png) | ![生成服务](docs/screenshots/07-settings-providers.png) |
 | 资产库：分类、评级、PBR / 骨骼 / LOD 标记、已发送标记 | 生成服务：填入你自己的密钥，自动识别区域，余额可见 |
+| ![绑骨与动作](docs/screenshots/08-animation.png) | ![Unity Play 模式](docs/screenshots/09-unity-play.png) |
+| 绑骨与动作：Tripo 绑骨 → 待机 / 行走 / 奔跑，应用里直接播放 | 送进 Unity 6 后按下 Play：Animator 三个状态，原地播放（0.1.4 实录） |
+
+![星璇在 Unity 里奔跑](docs/unity-run.gif)
 
 ## 第一次使用
 
