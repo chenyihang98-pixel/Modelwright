@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">下载最新版</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/">介绍页</a> ·
-  <a href="https://www.bilibili.com/video/BV1VMHU6mEQt">演示视频</a> ·
+  <a href="https://www.bilibili.com/video/BV1YqpZ6kEw4">演示视频</a> ·
   <a href="#第一次使用">第一次使用</a> ·
   <a href="#连接-unity">连接 Unity</a> ·
   <a href="#验证情况与已知限制">验证情况</a> ·
@@ -21,6 +21,16 @@
 > 当前版本 **0.1.5**（2026-10-12）：裙子不再跟着大腿翻板（Unity 插件 0.1.5「裙摆保形」，应用预览同步）；设定图拆分 2.0（任意网格、标签、特写框、地面线，自动判断视图方向归位）和「相对视图镜像」预检；新增「展示 / 影视级」目标平台（服务商最高几何精度 + 4K 贴图 + 大面数预算，验收按此打分）；一张正面图就能让概念图服务画出姿势一致的四视图并自动拆分归位。0.1.4 修好了带动作的角色进 Play 模式就消失的问题（真实 Unity 6000.6.4f1 目视验收：待机 / 行走 / 奔跑原地播放、朝向正确）。0.1.3 把腾讯混元生 3D 整个迁到腾讯云 TokenHub（一把 API Key 用全部接口，新增 48 个预设动作和文字描述动作），应用内给每家服务加了带截图的「接入指引」；0.1.2 把 Tripo 的绑骨和动作逐项实测跑通并让带动作的角色送进 Unity 自动配好 Animator；0.1.1 修复了 Unity 6 下贴图丢失的问题并加入自动更新。哪些经过了验证、哪些还没有，见文末「验证情况与已知限制」；改动清单见 [RELEASE-NOTES.md](RELEASE-NOTES.md)。
 
 ## 演示视频
+
+**第二集：将大肥鱼带入三次元——绑骨、三个动作、一键进 Unity**
+
+[![【免费工具】将大肥鱼带入三次元：绑骨、三个动作、一键进 Unity](docs/bilibili-cover-ep2.png)](https://www.bilibili.com/video/BV1YqpZ6kEw4)
+
+社区二创角色大肥鱼（DeepSeek 鲸鱼娘）：上集用一张设定图生成了 3D，这集在模匠里绑骨、生成待机 / 行走 / 奔跑三个动作，再一键送进 Unity 6 跑起来，星璇客串；片头是三格 AI 漫画，其余全程实录（1 分 54 秒）。B 站：<https://www.bilibili.com/video/BV1YqpZ6kEw4>（竖屏版 <https://www.bilibili.com/video/BV1t2pZ6iEqh>）
+
+> 角色「大肥鱼 / 鲸鱼娘」为社区二创形象：原型 上善无形，DeepSeek 女仆版二设 ZipZipPipe（CC BY-NC-SA 4.0）；设定图来自「鲸鱼娘开源资产库」（github.com/TreapGoGo/deepseek-whale-girl）。视频中的 3D 模型由模匠生成，按 CC BY-NC-SA 4.0 共享，非商业用途；与 DeepSeek 官方无关。
+
+**第一集：打破次元壁，让纸片人站进 Unity**
 
 [![【免费工具】打破次元壁，让纸片人站进 Unity](docs/bilibili-cover.png)](https://www.bilibili.com/video/BV1VMHU6mEQt)
 
