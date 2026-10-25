@@ -87,9 +87,9 @@
         <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
         <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.8/Modelwright-Setup-0.1.8-x64.exe">下载安装版 0.1.8</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.8/Modelwright-Portable-0.1.8-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.8/Modelwright-0.1.8-win.zip">免安装 zip</a>
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.9/Modelwright-Setup-0.1.9-x64.exe">下载安装版 0.1.9</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.9/Modelwright-Portable-0.1.9-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.9/Modelwright-0.1.9-win.zip">免安装 zip</a>
         </div>
         <p class="fine">Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
         <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
@@ -199,6 +199,7 @@
               <li><b>单图误判成设定图的修复</b>（2026-10-13，0.1.6）：用触发问题的两张大肥鱼 A 姿势瓦片（原图与 512 px 缩图）和五张真实设定图（鲸鱼娘资产库三视图、两张 Banana Pro 四视图、仓库自带两张）复测——瓦片不再被判为设定图，五张设定图全部仍被识别；单元测试覆盖「被竖缝切开的一张图」与「并排的两个对称道具视图」两种边界。</li>
               <li><b>面部平滑、裙摆四象限与混元撕裂蒙皮</b>（2026-10-13，0.1.7）：Unity 6000.6.4f1 批处理探针（插件自己的导入管线，静止 / 摆姿网格离线渲染）——大肥鱼 8 组画上去的五官找到 7 组放回皮肤、5633 个顶点移动，静止姿势渲染里眼窝消失，三个动作的包围盒不变；星璇 4 个象限辅助骨、1727 个顶点改刷；混元动作 FBX 的 skinStretch 1.67 触发警告，Tripo / Meshy 的文件无警告。预览器的面部平滑与裙摆四象限各有单元测试，「不是设定图」有端到端测试。没有在 Play 模式目视裙摆四象限的跟随角度。</li>
               <li><b>神经元绑定、试机场与外部动作文件</b>（2026-10-25，0.1.8）：合成形状的单元测试（球加四手找到 4 个部件、火柴人判为人形并从脚尖判出朝向、立方体判为整体、开放片判为不封闭）；流水线写出骨骼、四级 LOD 都有权重、三段动作、glTF 校验无错误；Unity 6000.6.4f1 批处理探针导入该 GLB——4 个蒙皮 LOD、7 根骨骼、Animator 3 个状态、行走和动作时的包围盒在变；试机场打开后场景有跟随摄像机、灯光、地面和挂着控制器的角色；外部动作文件的库存与移除有单元测试。没有在真实编辑器里按 Play 走过试机场，Mixamo 的真实文件没有实测。</li>
+              <li><b>真实检验与内置试机场</b>（2026-10-25，0.1.9）：端到端在真实应用里导入球加四手的 GLB → 神经元分析判定 ok、4 个神经元 → 绑定 → 新版本 animated、3 段动作 → 视口动画条 → 试机场里 3 段动作、按 W 切到 walk；Unity 6000.6.4f1 PlayMode 测试打开插件的试机场场景——角色先站着、巡逻开始后 2.5 秒走了 2.43 m、Animator 处于 walk、摄像机在上方朝向角色、蒙皮包围盒随动作变化（1 项通过）；Meshy 的 Walking.fbx 作为外部动作挂到 Tripo 绑骨的星璇上，探针回执 4 段动作、MeshyWalk 状态播放时包围盒在变；10 个示例模型与 5 个真实 GLB 的分析普查（小鸡 2 条腿、椅子 / 石头 / 绳结判整体、大肥鱼呆毛不再是头）。真实检验里发现并修了两处：绑定后的版本被标成静态；试机场画出了碰撞体凸包。</li>
             </ul>
           </div>
           <div>
@@ -208,9 +209,7 @@
               <li><b>混元动作版本在 Unity 里的蒙皮</b>：0.1.7 查明是文件本身的绑定矩阵与层级对不上（three.js、Unity、混元自己的转换都撕裂），不是导入设置能修的；插件测出撕裂就报警告、验收清单按问题处理，请改用 Tripo / Meshy 的动作版本或重新绑骨。Meshy 带动作版本的 Play 模式同样还没有目视验收。</li>
               <li><b>Unity 2022.3 与团结引擎</b>：插件通过了离线编译检查，尚未在这两种真实编辑器里验收。</li>
               <li>安装程序的卸载流程没有实际运行过；安装版已在 Windows 11 上实际安装并运行。</li>
-              <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。试机场的 Play 模式走动没有在真实编辑器里按过；Mixamo 的真实文件没有实测。</li>
-              <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。试机场的 Play 模式走动没有在真实编辑器里按过；Mixamo 的真实文件没有实测。</li>
-              <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。试机场的 Play 模式走动没有在真实编辑器里按过；Mixamo 的真实文件没有实测。</li>
+              <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；紧贴身体的手臂、裙子里的腿几何上分不出来（面板按资产类型提示）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。内置试机场没有物理引擎（木箱是方块碰撞，没有坡和台阶）；真实的非人形生成模型还没有拿到手测；Mixamo 的真实下载文件没有测（用的是 Meshy 的动作文件，机制相同）。</li>
               <li><b>裙摆保形与面部平滑的边界</b>：裙摆仍没有布料碰撞（0.1.7 起前片随抬腿掀起，走路不再穿出，奔跑的极限帧膝盖仍可能擦到），头发不处理；面部平滑填平处的边缘还有些毛糙，肤色范围内的腮红、胡须会被当成皮肤，深肤色角色暂不识别。</li>
             </ul>
             <p class="fine" style="margin-top:14px">已知限制：仅 Windows；只完整支持 Unity；本地后处理不处理带骨骼的模型和只有 FBX 的版本；拼音转写的多音字与超长描述有取舍。完整说明见 <a href="https://github.com/chenyihang98-pixel/Modelwright#验证情况与已知限制">README</a>。</p>
@@ -222,7 +221,7 @@
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.8 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Modelwright（模匠）0.1.9 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
       Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
     </div>
   </footer>
