@@ -87,9 +87,9 @@
         <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
         <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.11/Modelwright-Setup-0.1.11-x64.exe">下载安装版 0.1.11</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.11/Modelwright-Portable-0.1.11-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.11/Modelwright-0.1.11-win.zip">免安装 zip</a>
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.12/Modelwright-Setup-0.1.12-x64.exe">下载安装版 0.1.12</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.12/Modelwright-Portable-0.1.12-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.12/Modelwright-0.1.12-win.zip">免安装 zip</a>
         </div>
         <p class="fine">Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
         <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
@@ -202,6 +202,7 @@
               <li><b>真实检验与内置试机场</b>（2026-10-25，0.1.9）：端到端在真实应用里导入球加四手的 GLB → 神经元分析判定 ok、4 个神经元 → 绑定 → 新版本 animated、3 段动作 → 视口动画条 → 试机场里 3 段动作、按 W 切到 walk；Unity 6000.6.4f1 PlayMode 测试打开插件的试机场场景——角色先站着、巡逻开始后 2.5 秒走了 2.43 m、Animator 处于 walk、摄像机在上方朝向角色、蒙皮包围盒随动作变化（1 项通过）；Meshy 的 Walking.fbx 作为外部动作挂到 Tripo 绑骨的星璇上，探针回执 4 段动作、MeshyWalk 状态播放时包围盒在变；10 个示例模型与 5 个真实 GLB 的分析普查（小鸡 2 条腿、椅子 / 石头 / 绳结判整体、大肥鱼呆毛不再是头）。真实检验里发现并修了两处：绑定后的版本被标成静态；试机场画出了碰撞体凸包。</li>
               <li><b>动作设计台与自动关节映射</b>（2026-10-25，0.1.10）：映射 8 组骨架的单元测试（真实 Tripo 大肥鱼 41 根含扭转骨、Mixamo、混元式根骨、示例机器人、名字全乱的机器人、四足加尾巴、神经元链、用户修正），模板 12 项（独立前向运动学验证步态相位、膝盖时机、首尾闭合、跳跃起止、挥手单臂、四足对角、厘米骨架与米骨架一致），three.js 回放 3 项，流水线烘焙 4 项（glTF 校验 0 错误）；真实应用端到端——示例机器人映射 13 根为人形 → 保存 run → 试机场 4 段、Shift 用设计的 run → 烘焙出带 4 段动作的新版本；本机真实大肥鱼 Tripo FBX——映射为人形、保存 run 和 jump、试机场 5 段：W 走 Armature|walk、Shift 跑设计的 run、空格跳设计的 jump；Unity 6000.6.4f1 批处理探针导入烘焙后的机器人 GLB：导入成功、无警告、Animator 8 个状态，设计的 jump 中心高度 0.61 → 0.86 m、run 前后跨度 0.54 → 0.82 m，无 NaN。真实检验里发现并修了三处：根骨和 Pelvis 被当成部件摆动把角色掀翻、四足躯干链被判成腿、跳跃首帧肘部未归零。</li>
               <li><b>绑定姿势修复、生成上限与极限测试</b>（2026-10-25，0.1.11）：绑定姿势单元测试（弓背的节点姿势经 ×0.01 的骨架节点摆回绑定姿势，本就一致的骨架不动），预设映射 29 项（展示级向服务商要档位上限、空面板不评视图数）；端到端——示例机器人的动作设计台 + 试机场、本机真实大肥鱼 Tripo FBX（站直、脸正常、空格跳稳定）；真实 Tripo 两轮极限测试——整体顶配 70 积分：1,887,300 面、8192² 贴图、59 MB，后处理不减面、质量 A；自动分部件 90 积分：15 件、每件一个壳但都有开放边、头发脸躯干切成一块、眼睛鞋尾巴手臂鱼鳍分开、15 张 8K 贴图。逐边统计证实 v1 / v5 都是开放边 0 的单一封闭壳：被遮挡区域不存在是生成方式所致，不是参数。</li>
+              <li><b>拆件建模第一阶段</b>（2026-10-26，0.1.12）：单元测试 3676 通过（276 个文件）；真实 Tripo 积分——大肥鱼 41 张部件图（国际区）、10 件部件模型（头五次，中国区），八次组装；头的转台 36 帧逐帧看过（一张脸、后脑干净、有耳朵），六件各 12 帧看过；组装体与整身直出版并排对照：部件本身干净，拼装靠固定规则给起点、手动组装收尾；带动作的整身大肥鱼发送到 Unity 6000.6.4f1 并放进试机场，批处理 PlayMode 测试通过（巡逻 2.435 m、Animator 处于 walk、蒙皮包围盒随动作变化）。端到端四个门禁 73 条中 72 条通过，剩 1 条是本机窗口 1103×703 的环境差异。</li>
             </ul>
           </div>
           <div>
@@ -214,6 +215,7 @@
               <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；紧贴身体的手臂、裙子里的腿几何上分不出来（面板按资产类型提示）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。内置试机场没有物理引擎（木箱是方块碰撞，没有坡和台阶）；真实的非人形生成模型还没有拿到手测；Mixamo 的真实下载文件没有测（用的是 Meshy 的动作文件，机制相同）。</li>
               <li><b>动作设计台的边界</b>：模板是程序化摆动，不是动作捕捉（脚不贴地、没有 IK），想要更真的动作仍走服务商动作库或外部 FBX；FBX 版本的设计动作只在应用内可用，要进 Unity 请以 GLB 输出绑骨再烘焙；映射依赖"身体大致直立、左右对称"，躺着的、单腿的、多头的骨架需要手动修正。</li>
               <li><b>极限测试与分部件建模的边界</b>：极限测试只跑了一个角色、每轮一次，定的是基线不是规则；被遮挡区域不存在和"画上去的线变成浮雕"（睫毛成鳍、瞳孔成凸环、刘海在额头刻沟）这两件事这一版只是查清了，分部件建模只有设计草案，「部件补全」接口还没接入；8K 贴图与 200 万面的结果文件很大（59 MB / 104 MB），Tripo CDN 慢时一单要 20 分钟。</li>
+              <li><b>拆件建模的边界</b>：只跑了一个角色（大肥鱼）：阈值是初值；组装的固定规则（§7c）给的是起点，头发在后脑仍有空隙、尾巴根藏在裙后，最后要在手动组装面板里摆；穿插检查、组装后减面、对组装版绑骨、部件补全（Tripo mesh/complete）、C3 / C6 检查、模具的导出和仓库都还没有。"只画一对鳍"这类小附件的部件图图像模型画不好（五次都带头），已并入头发。中国区的图像任务跑 5 分钟会被服务端判失败，部件图请走国际区。</li>
               <li><b>裙摆保形与面部平滑的边界</b>：裙摆仍没有布料碰撞（0.1.7 起前片随抬腿掀起，走路不再穿出，奔跑的极限帧膝盖仍可能擦到），头发不处理；面部平滑填平处的边缘还有些毛糙，肤色范围内的腮红、胡须会被当成皮肤，深肤色角色暂不识别。</li>
             </ul>
             <p class="fine" style="margin-top:14px">已知限制：仅 Windows；只完整支持 Unity；本地后处理不处理带骨骼的模型和只有 FBX 的版本；拼音转写的多音字与超长描述有取舍。完整说明见 <a href="https://github.com/chenyihang98-pixel/Modelwright#验证情况与已知限制">README</a>。</p>
@@ -225,7 +227,7 @@
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.11 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Modelwright（模匠）0.1.12 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
       Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
     </div>
   </footer>
