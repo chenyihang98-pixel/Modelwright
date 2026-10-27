@@ -87,9 +87,9 @@
         <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
         <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.18/Modelwright-Setup-0.1.18-x64.exe">下载安装版 0.1.18</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.18/Modelwright-Portable-0.1.18-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.18/Modelwright-0.1.18-win.zip">免安装 zip</a>
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.19/Modelwright-Setup-0.1.19-x64.exe">下载安装版 0.1.19</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.19/Modelwright-Portable-0.1.19-x64.exe">便携版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.19/Modelwright-0.1.19-win.zip">免安装 zip</a>
         </div>
         <p class="fine">Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
         <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
@@ -204,6 +204,7 @@
               <li><b>绑定姿势修复、生成上限与极限测试</b>（2026-10-25，0.1.11）：绑定姿势单元测试（弓背的节点姿势经 ×0.01 的骨架节点摆回绑定姿势，本就一致的骨架不动），预设映射 29 项（展示级向服务商要档位上限、空面板不评视图数）；端到端——示例机器人的动作设计台 + 试机场、本机真实大肥鱼 Tripo FBX（站直、脸正常、空格跳稳定）；真实 Tripo 两轮极限测试——整体顶配 70 积分：1,887,300 面、8192² 贴图、59 MB，后处理不减面、质量 A；自动分部件 90 积分：15 件、每件一个壳但都有开放边、头发脸躯干切成一块、眼睛鞋尾巴手臂鱼鳍分开、15 张 8K 贴图。逐边统计证实 v1 / v5 都是开放边 0 的单一封闭壳：被遮挡区域不存在是生成方式所致，不是参数。</li>
               <li><b>拆件建模第一阶段</b>（2026-10-26，0.1.12）：单元测试 3676 通过（276 个文件）；真实 Tripo 积分——大肥鱼 41 张部件图（国际区）、10 件部件模型（头五次，中国区），八次组装；头的转台 36 帧逐帧看过（一张脸、后脑干净、有耳朵），六件各 12 帧看过；组装体与整身直出版并排对照：部件本身干净，拼装靠固定规则给起点、手动组装收尾；带动作的整身大肥鱼发送到 Unity 6000.6.4f1 并放进试机场，批处理 PlayMode 测试通过（巡逻 2.435 m、Animator 处于 walk、蒙皮包围盒随动作变化）。端到端四个门禁 73 条中 72 条通过，剩 1 条是本机窗口 1103×703 的环境差异。</li>
               <li><b>页面级回退</b>（2026-10-26，0.1.13）：单元测试 3686 通过（277 个文件）；端到端 back.spec 2/2 通过（页面级回退全流程、密钥草稿的离开守卫），重跑 home / settings / close-jobs / workspace / assets 88/88 通过，本机构建核对返回键、Esc、离开守卫均按规则工作。第一次在真实应用里跑就抓到一个真问题——由直接改 hash 产生的历史条目没有路由序号，离开守卫拦不住回到它的导航——已修（落到这种条目时标记为起点，图片编辑器的跳转改走路由器）。</li>
+              <li><b>标准人形 U 的三家绑骨、三家接口更新、双场地输入与性能</b>（2026-10-28，0.1.19）：单元测试 3816 通过、4 跳过（297 个文件）；e2e 72 条通过、1 条跳过；Unity 6000.6.4f1：三家导出各自导入（无警告）→ 场景保存、关闭、重开一致 → PlayMode 连续播放走 / 跑 / 开火 / 装填 / 倒地全部进入、无 NaN；性能（RTX 5080、2048 × 1104 窗口）：60 秒路线 p95 14.06 ms、p99 14.18 ms、无超过 50 ms 的可重复长帧，暂停 / 最小化 3 秒 0 次绘制；真机安装版 0.1.19：点一下画面只接管鼠标不开火，左键 30 → 29、按住连发，Shift 切换，Esc 暂停不返回，AI / 无敌开关即时生效且重启后保留，最小化即暂停，收起侧栏、取消最大化后准星仍在正中。没做：Tripo v3.0 的云端预设、Meshy 文生 T2.5、混元组件生成 / 独立 UV；生成路线与手拼路线留到下一版。</li>
               <li><b>闭环整改：真实输入、标准样本尺度、动作组合、出口到 Unity</b>（2026-10-28，0.1.18）：单元测试 3774 通过、4 跳过（293 个文件）；e2e 3 条通过；隔离实验：Xbot 尺度（94 倍 → 1 倍）、A 回归与滑步、赏金猎人移动连发 / 装填 / 死亡复活 / Shift / 导出、大肥鱼原生出口、导出 GLB 的 Unity 探针（A 22 状态、赏金猎人两次导入一致）。真机：安装版 0.1.18 真机：点一下画面即锁定并开始，左键一次弹药 30 → 29，Shift 一次切到"奔跑"、再按切回，Esc 暂停（"已暂停 · 点击画面继续"）、点击恢复；A 的正式动作数据受控更新完成——备份后用动作设计台重新导入同一批 14 条 FBX + Soldier / Xbot GLB，25 段同名替换、无重复、无配方丢失，离开再进靶场读到 25 段。手拼路线仍缺可用人形绑定。</li>
               <li><b>角色流程整改</b>（2026-10-27，0.1.17）：单元测试 3768 通过（290 个文件）；e2e cloud modules / submitted / 动作设计台 3 条通过；真实角色 + 真实 Mixamo 动作的实验用例：朝向四视图、未开始不掉血、三次死亡复活不残留、Esc 暂停、跑步原地化、头部俯仰 20.8° → 8.1°、滑步 0.60 → 0.15 m/s、部位配方保存重载、GLB 导出重载（骨向误差 < 1e-6°）再导入、组装体本地绑定（只找到尾巴，缺口如实记录）。</li>
               <li><b>靶场第二轮：竞技场、哨兵、真 Mixamo 动作</b>（2026-10-27，0.1.16）：单元测试 3758 通过（288 个文件）；e2e cloud modules（含试机场与靶场）/ submitted / 动作设计台 3 条通过；真机：从 Mixamo 下载的 14 条步枪动作导到 Tripo 绑骨角色（14 段、23 个关节对上、13 个角色全认出），逐状态截图核对走 / 跑 / 侧移 / 瞄准 / 开火 / 装填 / 倒地复活 / 挥刀。查出并修了 0.1.15 的四处硬伤：HUD 被画布盖住从未显示（试机场同样）、A / D 左右镜像（两个游戏）、枪口朝后朝下、镜头贴脸。</li>
@@ -235,7 +236,7 @@
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.18 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
+      Modelwright（模匠）0.1.19 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
       Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
     </div>
   </footer>
