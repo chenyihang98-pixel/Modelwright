@@ -23,7 +23,7 @@
 
 文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成本身由云端服务完成（你自己的 API 密钥），本机不需要下载任何大模型权重；换一台电脑，装上应用、填入密钥即可继续工作。
 
-> 当前版本 **0.1.26**（2026-11-09）：送进 Unity 的角色保留模型自带的蒙皮，插件（0.1.29）不再自动改动没有裙摆辅助骨的模型，已受影响的工程升级插件后再发送一次即可恢复；试机场里走和跑互相切换按步伐对齐，脚不再陷进地面。各版本的改动见 [RELEASE-NOTES.md](RELEASE-NOTES.md)，验证情况见文末「验证情况与已知限制」。
+> 当前版本 **0.1.27**（2026-11-10）：重新发送角色时，Unity 插件（0.1.32）只清理确实没人用的网格副本，旧插件会误删时应用先拦下、不写入；动作设计台的动作烘焙、导出后与预览一致，模型自带的动作保持原样；Unity 试玩里走跑切换对齐步伐。各版本的改动见 [RELEASE-NOTES.md](RELEASE-NOTES.md)，验证情况见文末「验证情况与已知限制」。
 
 ## 演示视频
 
@@ -47,9 +47,9 @@ Windows 10 / 11，64 位。三种形式任选其一，从 [Releases](https://git
 
 | 文件 | 说明 |
 |---|---|
-| `Modelwright-Setup-0.1.26-x64.exe` | 安装版（安装向导）。默认只为当前用户安装，不需要管理员权限，可以选择安装目录；选「为所有用户安装」时 Windows 会请求管理员权限。**只有安装版会自动更新** |
-| `Modelwright-Portable-0.1.26-x64.exe` | 便携版。单个文件，双击即用；设置、密钥、数据库和资产库都保存在 exe 旁边的 `Modelwright-Data` 文件夹，可以整个放在移动硬盘里带走 |
-| `Modelwright-0.1.26-win.zip` | 免安装压缩包，解压后运行 `Modelwright.exe`。在 `Modelwright.exe` 旁边放一个名为 `portable.flag` 的空文件，它也会把数据保存在自己目录下的 `data` 文件夹 |
+| `Modelwright-Setup-0.1.27-x64.exe` | 安装版（安装向导）。默认只为当前用户安装，不需要管理员权限，可以选择安装目录；选「为所有用户安装」时 Windows 会请求管理员权限。**只有安装版会自动更新** |
+| `Modelwright-Portable-0.1.27-x64.exe` | 便携版。单个文件，双击即用；设置、密钥、数据库和资产库都保存在 exe 旁边的 `Modelwright-Data` 文件夹，可以整个放在移动硬盘里带走 |
+| `Modelwright-0.1.27-win.zip` | 免安装压缩包，解压后运行 `Modelwright.exe`。在 `Modelwright.exe` 旁边放一个名为 `portable.flag` 的空文件，它也会把数据保存在自己目录下的 `data` 文件夹 |
 
 安装包**没有代码签名**：第一次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点「更多信息 → 仍要运行」即可。每个文件的 SHA-256 校验值写在对应 Release 的说明里，下载后可以核对。
 
@@ -165,13 +165,14 @@ GLB 需要 glTF 导入器（glTFast）：工程里没有时，应用会让你选
 - 付费流程用本机模拟的接口逐请求计数验证过：一次提交（包括双击、重试、批量）只发出应有的那些计费请求。
 - 发布的三个文件由同一份源码构建；安装目录和便携版通过自检（含抠图引擎、网格管线、Draco 解码、第三方许可清单）。
 - 用假密钥访问各服务商的真实接口：地址、TLS、鉴权失败的识别都正确（Tripo 两个区、Meshy、混元、Anthropic、Gemini）。
+- **重新发送保护与动作一致（2026-11-10，0.1.27）：Unity 6000.6.4f1 隔离测试工程——插件 0.1.31 上被预制体里 MeshFilter / 碰撞体 / 脚本字段引用的面部、裙摆副本重新发送后会被删，0.1.32 上全部保留（GUID 不变，回执写明谁在用），没人用的照常删除；真实升级链里 Unity 运行旧插件、插件已写入但未重新编译时两次拒写且零写入，切回 Unity 重新编译后重试只重做发送即导入。混元人形：动作模板烘焙 / 导出对预览 ≤ 0.0024 mm（修前 6–43 mm），模型自带的稀疏动作在烘焙和导出里与原文件逐顶点相同（导出修前 4.95 mm），Unity 里模板 ↔ 原生来回切换无残留。Unity 试玩：复核角色 120 Hz 下 69 个起停 / 走跑窗口全部在验收线内，走 → 跑最低 −9.84 → −1.52 mm。单元测试 4645 通过，端到端 348 条中 346 条通过，2 条需联网或打包环境的跳过。**
 - **Unity 保留原蒙皮与走跑切换（2026-11-09，0.1.26）：Unity 6000.6.4f1 三个测试工程——旧工程经引擎页「升级」从插件 0.1.28 换到 0.1.29，再发送一次后预制体回到 24 骨，绑定姿势和权重逐顶点与模型文件相同，6 段动作 × 4 个时刻与原导入偏差 0（修前最大 0.50 m），再发一次预制体字节不变；带辅助骨的拼装角色 82 骨、1507 个裙摆顶点原样，辅助骨由动作带动，没有重复骨骼或组件；全新工程首次发送同样 0 偏差；有用户内容的旧工程里，被场景引用的旧网格、挂了东西的辅助骨和手动加的组件都保留并在回执说明。走 ↔ 跑最坏下陷 102 / 72 mm → 0（Unity 演示 90 / 75 → 0）；放进试机场的回执、首次发送不弄脏场景都在真实编辑器里验证。陌生穿衣人形一图到 Unity 75 积分。单元测试 4602 通过，端到端 348 条中 346 条通过（3 条过时的测试期望改正后重跑通过），2 条需联网或打包环境的跳过。**
 - **步幅范围与接缝保护（2026-11-08，0.1.25）：修订 1–4 的 372 段动作与 0.1.24 发布的源码逐字节相同，修订 5 只加判断、动作曲线与修订 4 相同；9 副骨架量出新上限（复核用的 Tripo 骨架 1.7 → 1.45，缩小、放大 10 倍一致）；安装包上拉到上限能保存并烘焙，旧的修订 4 / 1.7 照旧烘焙并提示风险，修订 5 / 1.7 在列表、烘焙、导出三处被拒且不写文件；复核的细分面片反例不再被修，混元人形修复结果与 0.1.24 逐值相同；同一混元人形在安装包上接缝修复 → 补全基础动作 → 退出重开 → 导出，同一个文件在独立 three.js 加载器里读回（动作中接缝开口 ≤ 0.968 mm），在 Unity 6000.6.4f1（插件 0.1.26）里导入无警告、Play 模式实时播放，落地读数与 0.1.24 一致。单元测试 4575 通过，相关端到端 46 条通过。零积分。**
-- **走路落地与开放面片（2026-11-08，0.1.24）：修订 1–3 的 279 段动作与 0.1.23 发布的源码逐字节相同；三个真实人形骨架在本机用 0.1.24 一键「补全基础动作（本地）」，烘焙出的 GLB 在独立 three.js 加载器和 Unity 6000.6.4f1（插件 0.1.26）里读回，落地前一帧 / 两帧的脚踝落差与合成值逐帧一致（10.21 / 21.21、10.98 / 22.35、11.07 / 22.92 mm），无超可达关键帧、导入无警告；最大步幅下各骨架落地速度差都在约 0.3 m/s（修订 3 最高 4.0 m/s）；复核给的「两片只沿边相接的独立面片」原样走完整个权重整理，权重逐字节不变，混元人形照旧修好 131 处、文件与 0.1.23 逐字节相同；正常与 0.25 倍慢放画面复核。单元测试 4550 通过，相关端到端 46 条通过。零积分。**
 
 <details>
-<summary>更早版本的验证记录（0.1.5 – 0.1.23）</summary>
+<summary>更早版本的验证记录（0.1.5 – 0.1.24）</summary>
 
+- **走路落地与开放面片（2026-11-08，0.1.24）：修订 1–3 的 279 段动作与 0.1.23 发布的源码逐字节相同；三个真实人形骨架在本机用 0.1.24 一键「补全基础动作（本地）」，烘焙出的 GLB 在独立 three.js 加载器和 Unity 6000.6.4f1（插件 0.1.26）里读回，落地前一帧 / 两帧的脚踝落差与合成值逐帧一致（10.21 / 21.21、10.98 / 22.35、11.07 / 22.92 mm），无超可达关键帧、导入无警告；最大步幅下各骨架落地速度差都在约 0.3 m/s（修订 3 最高 4.0 m/s）；复核给的「两片只沿边相接的独立面片」原样走完整个权重整理，权重逐字节不变，混元人形照旧修好 131 处、文件与 0.1.23 逐字节相同；正常与 0.25 倍慢放画面复核。单元测试 4550 通过，相关端到端 46 条通过。零积分。**
 - **走路与蒙皮接缝（2026-11-08，0.1.23）：用已有的真实混元人形 FBX（零积分）——模板走路两膝侧鼓 192 mm → 9 mm，关键帧够不着 33 mm → 0，摆动中锁直的帧 → 0；接缝权重统一在 1,699 处权重不一致的拆分顶点里确认并修复 131 处（834 个顶点），走路时最大开缝 95–100 mm → 0.97 mm，白模走路 / Mixamo 走路 / 挥手 / 待机都看不到裂缝；同一份最终 GLB 在应用里关闭重开、导出、独立 three.js 加载器播放、Unity 6000.6.4f1 实播结果一致（插件 0.1.26，配速 0.980，归属保护 6 个场景全过）；另外两个人形同参数回归不退化；0.1.23 之前保存的修订 2 走路在新版里烘焙出的文件与旧版逐字节相同；用本机模拟的服务商从一键生成走到 FBX 本地转换、动作、烘焙、重开播放的整条链通过。0.1.21 之后的付费实测：Tripo 原生四视图与多视图生成、受控参照单图 / 四视对照、拼装角色绑骨（免费预检先行）、held-out 人形一图流 75 积分、normalize_scale 复核 25 积分；Meshy 单图到动作 35 积分；混元单图到绑骨 40 积分；报价与实扣一致。单元测试 4526 通过，相关端到端 75 条通过。没做：手拼角色、非人形、较弱机器、Unity 2022.3 / 团结引擎实机。**
 - **整图主线闭环（2026-11-01，0.1.21）：一张图到 Unity 的完整一条——Tripo 生成 + v3 两足绑骨（实扣 135 积分，其中第一次按旧默认四边面提交的 70 积分交回 FBX、记为未通过，并据此改了默认），绑骨前后 36 格转台一致；导入 1 个 GLB + 7 个 Mixamo FBX、部位摆动自定义左臂（摆幅 0.5 / 1.5 时左上臂 21.3° / 66.3°、右臂不变），重启后读回一致；已安装版系统级真实键鼠走完试机场（走、跑、跳、按 E 动作）和靶场（腰射与开镜首发、连发、装填、Esc），帧时间 p99 约 14 ms；烘焙出 12 段带循环声明的动画并面向 +Z，普通发送到 Unity 6000.6.4f1（插件 0.1.22）回执无警告，逐段实播循环片段一个周期姿态重合、一次性片段停在末帧，保存退出重开后结果相同。单元测试 4044 通过。没做：其他图片 / 体型 / 服务商、手拼角色、非人形、较弱机器、Unity 2022.3 / 团结引擎实机。**
 - **0.1.19 发布后复核补丁、有限收口、动作连续性与短实测（2026-10-29，0.1.20）：最终安装包上本机资产库的标准 U，系统级真实输入的短操作——边走边顺转、站立与行走腰射首发、约 12 米外胸靶中心单发与开镜小角度跟踪后开火（都命中）、箱边开镜慢转与短走——帧时间 p99 约 14.3 ms、没有超过 50 ms 的帧；同一箱边修改前相机单帧扑近 0.79 米、背包压住准星，修改后单帧最多 0.12 米；CPU 上跑真实游戏更新后的最终骨姿：腰射首帧左腕 34.0 → 8.4 cm，水平瞄准按 R 15.0 → 3.0 cm，跑 → 跳 27.7 → 2.8 cm（旧实现从修改前源码的隔离副本运行），赏金猎人跳起落地后待机由停在末帧改为持续循环；Unity 6000.6.4f1 复现并修好两个片段同名。单元测试 4026 通过。没做：较弱机器的帧时间、Unity 2022.3 / 团结引擎实机、当前版本的完整安装 / 卸载。**
@@ -213,6 +214,7 @@ GLB 需要 glTF 导入器（glTFast）：工程里没有时，应用会让你选
 - 裙摆保形没有布料碰撞（0.1.7 起前片随抬腿掀起，走路不再穿出，但奔跑的极限帧膝盖仍可能擦到裙摆），不处理头发。0.1.26 起 Unity 插件（0.1.29）不再自动给模型找裙子、加辅助骨：裙装角色先在应用里做「权重整理」；旧的自动检测只在交付说明文件写 `legacy` 时运行，界面没有开关。
 - 神经元绑定的部件只从身体上长一层（手指、头上的耳朵并进所在部件）；紧贴身体的手臂、裙子里的腿几何上分不出来（面板会按资产类型提示）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。内置试机场没有物理引擎（木箱是方块碰撞，没有坡和台阶）；真实的非人形生成模型还没有拿到手测；Unity 试机场已在真实编辑器的 Play 模式里用真实键盘走过（插件 0.1.27、旧输入管理器的工程，最终混元人形）；只开新输入系统的工程读不到键盘，演示只会自动绕圈；Mixamo 的真实下载文件已在 0.1.16 实测（14 条步枪动作导到 Tripo 绑骨角色，见上方 0.1.16 一条）。
 - 动作设计台的模板是程序化动作，不是动作捕捉：人形走路有落脚和两骨 IK，但步幅、屈膝比真人小，关键帧之间有毫米级插值偏差，蹬地时前掌会压进地面几毫米，没有转身、坡道和全身 IK；想要更真的动作仍走服务商动作库或外部 FBX；镜像骨架不在支持范围（动作设计台会提示）；FBX 版本的原文件不会被就地改写：设计或导入的动作要带出应用，用动作面板的「导出带动作的 GLB 文件…」（当前模型加已保存的动作烘焙成一个 GLB，可再发送到 Unity）；映射依赖"身体大致直立、左右对称"，躺着的、单腿的、多头的骨架需要手动修正。
+- 慢跑（动作设计台里手动选的修订 6）还不是默认基础动作：只在一个两只脚静止等高的人形上逐项核对过；应用试机场里停下时有一帧身体轻微下顿；自带 Running 的角色在 Unity 试玩里从站立起跑 / 停下仍多陷 2.8 / 5.3 mm，跑转走有一帧骨盆变化略超验收线；两只脚静止不等高、鞋尖很长的模型跑起来一只脚很少着地、鞋尖会滑。模型自带的、只给部分关节打关键帧的动作，在应用视口里按绑定姿势补默认值，个别模型会与导出文件和引擎里差几毫米（烘焙和导出按原文件）。
 - 极限测试只跑了一个角色、每轮一次，定的是基线不是规则；被遮挡区域不存在和"画上去的线变成浮雕"（睫毛成鳍、瞳孔成凸环、刘海在额头刻沟）这两件事这一版只是查清了（拆件建模当时只有设计草案，0.1.12 起有了第一阶段，见下一条），「部件补全」接口还没接入；8K 贴图与 200 万面的结果文件很大（59 MB / 104 MB），Tripo CDN 慢时一单要 20 分钟。
 - 拆件建模只跑了一个角色（大肥鱼）：阈值是初值；组装的固定规则（§7c）给的是起点，头发在后脑仍有空隙、尾巴根藏在裙后，最后要在手动组装面板里摆；穿插检查、组装后减面、对组装版绑骨、部件补全（Tripo mesh/complete）、C3 / C6 检查、模具的导出和仓库都还没有。"只画一对鳍"这类小附件的部件图图像模型画不好（五次都带头），已并入头发。中国区的图像任务跑 5 分钟会被服务端判失败，部件图请走国际区。
 - 回退只有页面级；任务抽屉开着时在页面上按 Esc 不回退（沿用抽屉的既定行为）；离开守卫接了动作映射、密钥输入框和手动组装三处草稿。
@@ -235,6 +237,6 @@ GLB 需要 glTF 导入器（glTFast）：工程里没有时，应用会让你选
 
 **Modelwright** is a Windows desktop workbench for game developers: text or image in, a game-ready 3D model out, delivered straight into your Unity project. Generation runs on cloud services with your own API keys (Tripo, Meshy, Tencent Hunyuan; an offline demo service needs no key); everything around the cloud call is local — input preparation, presets per asset type / platform / style, pre-flight checks and cost estimates before credits are spent, download, decimation / LOD / collider post-processing, a three-gate quality check, an asset library, and one-click delivery through a Unity editor plugin.
 
-Download the installer, the portable exe or the zip from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases/latest) (Windows 10/11 x64; unsigned — SmartScreen may warn). The UI is Chinese first; switch to English in Settings → Language & about. Keys are stored only on your machine, encrypted by Windows; the app has no server of its own. Version 0.1.26 keeps a model's own skin in Unity: the plugin (0.1.29) no longer re-skins a model without skirt helper joints, and one more delivery restores a project the old behaviour touched. In the playground, switching between walk and run now keeps the stride in step, so the feet no longer sink. Every version's changes are in [RELEASE-NOTES.md](RELEASE-NOTES.md). Verified with real paid keys (Tripo, Meshy, Tencent Hunyuan) and inside a real Unity 6000.6.4f1 editor (Unity 2022.3 and Tuanjie only by an offline compile). The full installer install/uninstall flow was last run with 0.1.14 (installed to a temporary folder, silently uninstalled) and has not been re-run for the current version. Licensed under the [EULA](LICENSE-en.txt); third-party components under their own licences ([notices](THIRD-PARTY-NOTICES.txt)).
+Download the installer, the portable exe or the zip from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases/latest) (Windows 10/11 x64; unsigned — SmartScreen may warn). The UI is Chinese first; switch to English in Settings → Language & about. Keys are stored only on your machine, encrypted by Windows; the app has no server of its own. Version 0.1.27 makes delivering again safe: the Unity plugin (0.1.32) removes a mesh copy only when nothing uses it, and the app refuses to write when an old plugin would delete one. Designed motions bake and export exactly as previewed while a model's own clips keep playing as they were, and the Unity demo's walk ↔ run switch keeps the stride in step. Every version's changes are in [RELEASE-NOTES.md](RELEASE-NOTES.md). Verified with real paid keys (Tripo, Meshy, Tencent Hunyuan) and inside a real Unity 6000.6.4f1 editor (Unity 2022.3 and Tuanjie only by an offline compile). The full installer install/uninstall flow was last run with 0.1.14 (installed to a temporary folder, silently uninstalled) and has not been re-run for the current version. Licensed under the [EULA](LICENSE-en.txt); third-party components under their own licences ([notices](THIRD-PARTY-NOTICES.txt)).
 
 </details>
