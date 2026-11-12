@@ -30,11 +30,11 @@ Windows 10 / 11，引擎目前只接了 Unity。
 
 [![将大肥鱼带入三次元](docs/bilibili-cover-ep2.png)](https://www.bilibili.com/video/BV1YqpZ6kEw4)
 
+<sub>大肥鱼（鲸鱼娘）是社区二创角色：原型 上善无形，女仆版二设 ZipZipPipe，设定图来自 <a href="https://github.com/TreapGoGo/deepseek-whale-girl">鲸鱼娘开源资产库</a>，CC BY-NC-SA 4.0。视频里的模型按同一协议共享。</sub>
+
 **第一集：让纸片人站进 Unity**　一张 192 × 208 的桌宠小图，从生成到进场景
 
 [![打破次元壁，让纸片人站进 Unity](docs/bilibili-cover.png)](https://www.bilibili.com/video/BV1VMHU6mEQt)
-
-<sub>大肥鱼（鲸鱼娘）是社区二创角色：原型 上善无形，女仆版二设 ZipZipPipe，设定图来自 <a href="https://github.com/TreapGoGo/deepseek-whale-girl">鲸鱼娘开源资产库</a>，CC BY-NC-SA 4.0。视频里的模型按同一协议共享。</sub>
 
 ## 下载
 
