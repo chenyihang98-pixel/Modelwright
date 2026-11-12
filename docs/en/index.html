@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modelwright — one image in, a 3D model out, straight into Unity</title>
+  <meta name="description" content="Modelwright turns one image or one sentence into a 3D model, then decimates, rigs and animates it and sends it to Unity in one click. Windows desktop app, free, runs on your own API key.">
+  <link rel="icon" href="../icon.png">
+  <style>
+    :root {
+      --bg: #0b0c0f; --raised: #121419; --panel: #161920; --line: #262a33; --fg: #e8eaf0; --muted: #9aa1ad; --subtle: #6b7280;
+      --accent: #7c5cff; --cyan: #22d3ee; --ok: #34d399;
+      --radius: 14px; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Roboto, sans-serif; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header.top { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,12,15,.8); border-bottom: 1px solid var(--line); }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; color: var(--fg); }
+    .brand .zh { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 20px; }
+    .brand .en { color: var(--muted); font-weight: 500; font-size: 13px; }
+    nav.links { display: flex; gap: 18px; font-size: 14px; }
+    nav.links a { color: var(--muted); }
+    nav.links a:hover { color: var(--fg); text-decoration: none; }
+    .hero { padding: 72px 0 40px; text-align: center; background: radial-gradient(60% 50% at 50% 0%, rgba(124,92,255,.22), transparent 70%); }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -.02em; }
+    .hero h1 em { font-style: normal; white-space: nowrap; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lead { color: var(--muted); font-size: 18px; max-width: 760px; margin: 0 auto 28px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; border: 1px solid var(--line); background: var(--raised); color: var(--fg); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #5b8cff); border-color: transparent; color: #fff; }
+    .btn:hover { text-decoration: none; filter: brightness(1.08); }
+    .fine { color: var(--subtle); font-size: 13px; }
+    .shot { margin: 36px auto 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); max-width: 1000px; }
+    .shot img { display: block; width: 100%; height: auto; }
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    section h2 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+    section p.sub { color: var(--muted); margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card .n { display: inline-block; width: 28px; height: 28px; border-radius: 8px; background: rgba(124,92,255,.18); color: var(--accent); text-align: center; line-height: 28px; font-weight: 700; margin-bottom: 10px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { padding: 12px 14px; font-size: 14px; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    code { font-family: ui-monospace, Consolas, "Cascadia Mono", monospace; font-size: 13px; background: var(--raised); padding: 2px 6px; border-radius: 6px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .two h3 { margin: 0 0 10px; font-size: 17px; }
+    ul.tight { margin: 0; padding-left: 18px; color: var(--muted); }
+    ul.tight li { margin: 6px 0; }
+    .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-right: 6px; }
+    .tag.ok { color: var(--ok); border-color: rgba(52,211,153,.4); }
+    .tag.warn { color: #fbbf24; border-color: rgba(251,191,36,.4); }
+    .lang { display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--raised); font-size: 15px; font-weight: 700; white-space: nowrap; }
+    .lang a, .lang span { padding: 5px 14px; border-radius: 999px; color: var(--muted); }
+    .lang a:hover { color: var(--fg); text-decoration: none; }
+    .lang .on { background: linear-gradient(135deg, var(--accent), #5b8cff); color: #fff; }
+    footer { padding: 36px 0 60px; color: var(--subtle); font-size: 13px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav.links { display: none; } .brand .en { display: none; } .lang a, .lang span { padding: 5px 10px; } .hero { padding-top: 48px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#"><img src="../icon.png" alt="" width="28" height="28"><span class="zh">Modelwright</span></a>
+      <div class="lang" aria-label="Language"><a href="../">简体中文</a><span class="on">English</span><a href="../ja/">日本語</a></div>
+      <nav class="links">
+        <a href="#demo">Demo</a>
+        <a href="#features">Features</a>
+        <a href="#shots">Screenshots</a>
+        <a href="#start">Get started</a>
+        <a href="#unity">Unity</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.en.md">Changelog</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/README.en.md">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <h1>One image in, a 3D model out — <em>straight into Unity</em></h1>
+        <p class="lead">Drop in an image or type a sentence and get a model you can actually use. Decimation, LODs, colliders, rigging and motions all happen in one window. Free; generation runs on your own API key.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Setup-0.1.27-x64.exe">Download installer 0.1.27</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Portable-0.1.27-x64.exe">Portable</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-0.1.27-win.zip">zip</a>
+        </div>
+        <p class="fine"><a href="https://github.com/chenyihang98-pixel/Modelwright/releases"><img alt="Total downloads" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fstarwright.xyz%2Fapi%2Fdownloads%2Fmodelwright&amp;query=%24.total&amp;label=downloads&amp;color=2b48f0&amp;cacheSeconds=1800" style="vertical-align:middle"></a> · Windows 10 / 11 · The installer updates itself · Not code-signed: when Windows stops you, click “More info → Run anyway”</p>
+        <div class="shot"><img src="../screenshots/02-home.png" alt="Modelwright home screen" loading="eager"></div>
+      </div>
+    </div>
+
+    <section id="demo">
+      <div class="wrap">
+        <h2>Demo</h2>
+        <p class="sub">A character generated, rigged and animated in Modelwright, running in Unity 6.</p>
+        <div class="shot" style="margin-top:0;max-width:800px"><img src="../unity-run.gif" alt="A character generated with Modelwright running in Unity" loading="lazy"></div>
+        <p class="fine" style="text-align:center;margin-top:14px">Two short videos on bilibili (Chinese captions, mostly screen recording): <a href="https://www.bilibili.com/video/BV1YqpZ6kEw4" target="_blank" rel="noopener">Episode 2 — rig, three motions, into Unity →</a> · <a href="https://www.bilibili.com/video/BV1VMHU6mEQt" target="_blank" rel="noopener">Episode 1 — a tiny sprite becomes a 3D character</a></p>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>What it does</h2>
+        <p class="sub">A model fresh out of an AI generator is rarely ready to use. Modelwright strings together everything before and after the generation step.</p>
+        <div class="grid">
+          <div class="card"><span class="n">1</span><h3>Generate</h3><p>Image or text to 3D, through Tripo, Meshy or Tencent Hunyuan. Turnaround sheets with three or four views are split automatically, and a single front view can be turned into four views first.</p></div>
+          <div class="card"><span class="n">2</span><h3>Check before you pay</h3><p>You see roughly how many credits a job will cost before it is submitted, and problems with the image or the settings are flagged up front. A request that costs credits is never sent twice on its own.</p></div>
+          <div class="card"><span class="n">3</span><h3>Local post-processing</h3><p>Decimation, LODs, colliders, pivot and size, done in one go from an “asset type × target platform” preset. Costs no credits.</p></div>
+          <div class="card"><span class="n">4</span><h3>Rigging and motions</h3><p>Rig in the cloud; tune idle, walk, run and jump yourself in the Motion studio, or import Mixamo clips. Drive the character around in the Playground and the Range to see how it holds up.</p></div>
+          <div class="card"><span class="n">5</span><h3>Into Unity</h3><p>With the plugin installed, one click builds the materials, the prefab (with LODs and colliders) and the Animator, and drops the model into the scene.</p></div>
+          <div class="card"><span class="n">6</span><h3>Asset library</h3><p>Version history, folders, search, a recycle bin, export to GLB / OBJ / STL / PLY. Batch jobs run in a queue and survive closing the app.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shots">
+      <div class="wrap">
+        <h2>Screenshots</h2>
+        <p class="sub">The UI is Chinese by default and can be switched to English.</p>
+        <div class="gallery">
+          <figure><img src="../screenshots/03-workspace.png" alt="Workspace" loading="lazy"><figcaption>Workspace</figcaption></figure>
+          <figure><img src="../screenshots/04-generate-preflight.png" alt="Pre-flight" loading="lazy"><figcaption>Checks and cost before submitting</figcaption></figure>
+          <figure><img src="../screenshots/05-postprocess.png" alt="Post-processing" loading="lazy"><figcaption>Local post-processing, before and after</figcaption></figure>
+          <figure><img src="../screenshots/06-assets.png" alt="Asset library" loading="lazy"><figcaption>Asset library</figcaption></figure>
+          <figure><img src="../screenshots/07-settings-providers.png" alt="3D providers" loading="lazy"><figcaption>Your own keys, with the balance in view</figcaption></figure>
+          <figure><img src="../screenshots/08-animation.png" alt="Rigging and motions" loading="lazy"><figcaption>Rigging and motions</figcaption></figure>
+          <figure><img src="../screenshots/09-unity-play.png" alt="Unity Play mode" loading="lazy"><figcaption>Play mode in Unity</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <h2>Get started</h2>
+        <div class="two">
+          <div>
+            <h3>Three steps</h3>
+            <ul class="tight">
+              <li>Install and open it, then pick a 3D provider in the welcome guide. Without a key, choose “Demo (offline)”: it returns built-in sample models, enough to learn the flow.</li>
+              <li>On the Home page, drop an image in or type a description.</li>
+              <li>The result shows up under Assets. Open it in the Workspace to inspect the mesh and textures, post-process, rig, or send it to Unity.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>API keys</h3>
+            <table>
+              <tr><th>Provider</th><th>Where to get a key</th></tr>
+              <tr><td>Tripo (recommended)</td><td><a href="https://developers.tripo3d.ai">Global</a> / <a href="https://developers.tripo3d.com">China</a> — separate accounts, each with its own field</td></tr>
+              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a> — needs a Pro subscription</td></tr>
+              <tr><td>Tencent Hunyuan 3D</td><td><a href="https://console.cloud.tencent.com/tokenhub/apikey">TokenHub</a> — enable the HY-3D models, then create a key in the Guangzhou region</td></tr>
+            </table>
+            <p class="fine" style="margin-top:12px">Keys stay on your own computer, encrypted by Windows. Modelwright has no server and collects nothing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="unity">
+      <div class="wrap">
+        <h2>Connecting Unity</h2>
+        <p class="sub">Works with Unity 2022.3, Unity 6 and Tuanjie, on Built-in, URP and HDRP.</p>
+        <ul class="tight">
+          <li>Add your project on the Engine page, click “Install plugin”, and from then on just hit “Send to Unity” on any asset.</li>
+          <li>With the editor open the import happens right away: materials, prefab, LODs and colliders are built and the model is placed in the scene. A character with motions gets its Animator wired up — press Play and it moves.</li>
+          <li>Sending works without the plugin too; the files simply land in <code>Assets/Modelwright/</code> and Unity does its default import.</li>
+          <li>If the project has no glTF importer, you'll be asked whether to install glTFast (free, recommended).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="issues">
+      <div class="wrap">
+        <h2>Known issues</h2>
+        <ul class="tight">
+          <li>Windows only, Unity only.</li>
+          <li>Mostly tested on Unity 6. Unity 2022.3 and Tuanjie have seen far less testing — please open an issue if something breaks.</li>
+          <li>Cloud motion files from Tencent Hunyuan come out with torn skinning in Unity; the files themselves are at fault. For a character rigged by Hunyuan, add motions with “Complete base motions (local)” in the Motion studio instead.</li>
+          <li>Motion studio clips are procedural, not mocap. Fine for prototypes and play tests; import Mixamo clips when you want something more natural.</li>
+          <li>No cloth simulation for skirts or hair, so a skirt may clip through the legs when running.</li>
+          <li>Rigged models can't be decimated or given LODs locally.</li>
+        </ul>
+        <p class="fine" style="margin-top:14px">What changed in each version is in the <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.en.md">changelog</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Modelwright · Free to use, not open source — see the <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE-en.txt">license</a> · Third-party components: <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · Problems? Open an <a href="https://github.com/chenyihang98-pixel/Modelwright/issues">issue</a>
+    </div>
+  </footer>
+</body>
+</html>

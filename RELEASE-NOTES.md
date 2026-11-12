@@ -1,3 +1,7 @@
+<h3 align="center">
+  简体中文 &nbsp;|&nbsp; <a href="RELEASE-NOTES.en.md">English</a> &nbsp;|&nbsp; <a href="RELEASE-NOTES.ja.md">日本語</a>
+</h3>
+
 # 更新日志
 
 安装版会自动更新；便携版和 zip 到 [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases) 下新的。

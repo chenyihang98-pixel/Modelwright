@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modelwright：画像 1 枚から 3D モデルを生成、ワンクリックで Unity へ</title>
+  <meta name="description" content="Modelwright は、画像 1 枚か一文から 3D モデルを生成し、ポリゴン削減・リギング・モーション付けを行って、ワンクリックで Unity に送る Windows アプリです。無料で、自分の API キーを使います。">
+  <link rel="icon" href="../icon.png">
+  <style>
+    :root {
+      --bg: #0b0c0f; --raised: #121419; --panel: #161920; --line: #262a33; --fg: #e8eaf0; --muted: #9aa1ad; --subtle: #6b7280;
+      --accent: #7c5cff; --cyan: #22d3ee; --ok: #34d399;
+      --radius: 14px; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Roboto, sans-serif; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header.top { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,12,15,.8); border-bottom: 1px solid var(--line); }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; color: var(--fg); }
+    .brand .zh { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 20px; }
+    .brand .en { color: var(--muted); font-weight: 500; font-size: 13px; }
+    nav.links { display: flex; gap: 18px; font-size: 14px; }
+    nav.links a { color: var(--muted); }
+    nav.links a:hover { color: var(--fg); text-decoration: none; }
+    .hero { padding: 72px 0 40px; text-align: center; background: radial-gradient(60% 50% at 50% 0%, rgba(124,92,255,.22), transparent 70%); }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -.02em; }
+    .hero h1 em { font-style: normal; white-space: nowrap; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lead { color: var(--muted); font-size: 18px; max-width: 760px; margin: 0 auto 28px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; border: 1px solid var(--line); background: var(--raised); color: var(--fg); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #5b8cff); border-color: transparent; color: #fff; }
+    .btn:hover { text-decoration: none; filter: brightness(1.08); }
+    .fine { color: var(--subtle); font-size: 13px; }
+    .shot { margin: 36px auto 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); max-width: 1000px; }
+    .shot img { display: block; width: 100%; height: auto; }
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    section h2 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+    section p.sub { color: var(--muted); margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card .n { display: inline-block; width: 28px; height: 28px; border-radius: 8px; background: rgba(124,92,255,.18); color: var(--accent); text-align: center; line-height: 28px; font-weight: 700; margin-bottom: 10px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { padding: 12px 14px; font-size: 14px; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    code { font-family: ui-monospace, Consolas, "Cascadia Mono", monospace; font-size: 13px; background: var(--raised); padding: 2px 6px; border-radius: 6px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .two h3 { margin: 0 0 10px; font-size: 17px; }
+    ul.tight { margin: 0; padding-left: 18px; color: var(--muted); }
+    ul.tight li { margin: 6px 0; }
+    .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-right: 6px; }
+    .tag.ok { color: var(--ok); border-color: rgba(52,211,153,.4); }
+    .tag.warn { color: #fbbf24; border-color: rgba(251,191,36,.4); }
+    .lang { display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--raised); font-size: 15px; font-weight: 700; white-space: nowrap; }
+    .lang a, .lang span { padding: 5px 14px; border-radius: 999px; color: var(--muted); }
+    .lang a:hover { color: var(--fg); text-decoration: none; }
+    .lang .on { background: linear-gradient(135deg, var(--accent), #5b8cff); color: #fff; }
+    footer { padding: 36px 0 60px; color: var(--subtle); font-size: 13px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav.links { display: none; } .brand .en { display: none; } .lang a, .lang span { padding: 5px 10px; } .hero { padding-top: 48px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#"><img src="../icon.png" alt="" width="28" height="28"><span class="zh">Modelwright</span></a>
+      <div class="lang" aria-label="言語"><a href="../">简体中文</a><a href="../en/">English</a><span class="on">日本語</span></div>
+      <nav class="links">
+        <a href="#demo">デモ</a>
+        <a href="#features">できること</a>
+        <a href="#shots">スクリーンショット</a>
+        <a href="#start">はじめかた</a>
+        <a href="#unity">Unity</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.ja.md">更新履歴</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/README.ja.md">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <h1>画像 1 枚から 3D モデルを生成、<em>ワンクリックで Unity へ</em></h1>
+        <p class="lead">画像を入れるか一文を書くだけで、そのまま使えるモデルができあがります。ポリゴン削減、LOD、コライダー、リギング、モーションまで 1 つのウィンドウで完結。無料で、生成には自分の API キーを使います。</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Setup-0.1.27-x64.exe">インストーラー版 0.1.27</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Portable-0.1.27-x64.exe">ポータブル版</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-0.1.27-win.zip">zip</a>
+        </div>
+        <p class="fine"><a href="https://github.com/chenyihang98-pixel/Modelwright/releases"><img alt="累計ダウンロード" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fstarwright.xyz%2Fapi%2Fdownloads%2Fmodelwright&amp;query=%24.total&amp;label=%E7%B4%AF%E8%A8%88%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89&amp;suffix=%20%E5%9B%9E&amp;color=2b48f0&amp;cacheSeconds=1800" style="vertical-align:middle"></a> · Windows 10 / 11 · インストーラー版は自動更新 · コード署名なし：Windows の警告が出たら「詳細情報」→「実行」</p>
+        <div class="shot"><img src="../screenshots/02-home.png" alt="Modelwright のホーム画面" loading="eager"></div>
+      </div>
+    </div>
+
+    <section id="demo">
+      <div class="wrap">
+        <h2>デモ</h2>
+        <p class="sub">Modelwright で生成してリギングし、モーションを付けたキャラクターが Unity 6 で走っているところです。</p>
+        <div class="shot" style="margin-top:0;max-width:800px"><img src="../unity-run.gif" alt="Modelwright で生成したキャラクターが Unity で走っている様子" loading="lazy"></div>
+        <p class="fine" style="text-align:center;margin-top:14px">bilibili に短い動画が 2 本あります（字幕は中国語ですが、ほとんどが画面収録です）：<a href="https://www.bilibili.com/video/BV1YqpZ6kEw4" target="_blank" rel="noopener">第 2 話　リギング、3 つのモーション、Unity へ →</a> · <a href="https://www.bilibili.com/video/BV1VMHU6mEQt" target="_blank" rel="noopener">第 1 話　小さなスプライトが 3D キャラクターに</a></p>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>できること</h2>
+        <p class="sub">AI で生成したモデルは、そのままではなかなか使えません。Modelwright は生成の前後に必要な作業をひとつながりにしました。</p>
+        <div class="grid">
+          <div class="card"><span class="n">1</span><h3>生成</h3><p>画像またはテキストから 3D を生成。Tripo、Meshy、Tencent Hunyuan に対応しています。三面図・四面図の設定画は自動で分割され、正面の 1 枚から四面図を描かせることもできます。</p></div>
+          <div class="card"><span class="n">2</span><h3>お金を使う前にチェック</h3><p>送信前におおよその消費クレジットが分かり、画像やパラメーターに問題があれば先に知らせます。課金されるリクエストが勝手に再送されることはありません。</p></div>
+          <div class="card"><span class="n">3</span><h3>ローカル後処理</h3><p>ポリゴン削減、LOD、コライダー、ピボットとサイズを、「アセットの種類 × ターゲットプラットフォーム」のプリセットでまとめて処理します。クレジットは消費しません。</p></div>
+          <div class="card"><span class="n">4</span><h3>リギングとモーション</h3><p>リギングはクラウドで。Motion studio で待機・歩き・走り・ジャンプを調整したり、Mixamo のモーションを取り込んだりできます。Playground と Range（射撃場）でキャラクターを操作して確かめられます。</p></div>
+          <div class="card"><span class="n">5</span><h3>Unity へ</h3><p>プラグインを入れておけばワンクリックで送信。マテリアル、プレハブ（LOD・コライダー付き）、Animator まで作られ、そのままシーンに配置されます。</p></div>
+          <div class="card"><span class="n">6</span><h3>アセットライブラリ</h3><p>バージョン履歴、フォルダー、検索、ごみ箱。GLB / OBJ / STL / PLY に書き出せます。バッチ処理はキューで実行され、アプリを閉じても消えません。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shots">
+      <div class="wrap">
+        <h2>スクリーンショット</h2>
+        <p class="sub">表示言語は中国語と英語です。日本語表示は今後対応予定です。</p>
+        <div class="gallery">
+          <figure><img src="../screenshots/03-workspace.png" alt="ワークスペース" loading="lazy"><figcaption>ワークスペース</figcaption></figure>
+          <figure><img src="../screenshots/04-generate-preflight.png" alt="送信前のチェック" loading="lazy"><figcaption>送信前のチェックと費用</figcaption></figure>
+          <figure><img src="../screenshots/05-postprocess.png" alt="後処理" loading="lazy"><figcaption>ローカル後処理（処理前後の比較）</figcaption></figure>
+          <figure><img src="../screenshots/06-assets.png" alt="アセットライブラリ" loading="lazy"><figcaption>アセットライブラリ</figcaption></figure>
+          <figure><img src="../screenshots/07-settings-providers.png" alt="生成サービスの設定" loading="lazy"><figcaption>自分のキーを入力。残高も確認できます</figcaption></figure>
+          <figure><img src="../screenshots/08-animation.png" alt="リギングとモーション" loading="lazy"><figcaption>リギングとモーション</figcaption></figure>
+          <figure><img src="../screenshots/09-unity-play.png" alt="Unity の Play モード" loading="lazy"><figcaption>Unity で Play</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <h2>はじめかた</h2>
+        <div class="two">
+          <div>
+            <h3>3 ステップ</h3>
+            <ul class="tight">
+              <li>インストールして起動し、ガイドに沿って生成サービスを選びます。キーがまだなければ「Demo (offline)」を選んでください。内蔵のサンプルモデルが返ってくるので、流れをつかむのに使えます。</li>
+              <li>Home ページに画像をドラッグするか、説明を一文書きます。</li>
+              <li>結果は Assets ページに入ります。Workspace を開くと、メッシュやテクスチャの確認、後処理、リギング、Unity への送信ができます。</li>
+            </ul>
+          </div>
+          <div>
+            <h3>API キー</h3>
+            <table>
+              <tr><th>サービス</th><th>キーの取得先</th></tr>
+              <tr><td>Tripo（おすすめ）</td><td><a href="https://developers.tripo3d.ai">グローバル</a> / <a href="https://developers.tripo3d.com">中国</a>。アカウントは別々で、入力欄も分かれています</td></tr>
+              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>。Pro プランの契約が必要です</td></tr>
+              <tr><td>Tencent Hunyuan 3D</td><td><a href="https://console.cloud.tencent.com/tokenhub/apikey">TokenHub</a>。HY-3D モデルを有効にしてからキーを作成します（リージョンは広州）</td></tr>
+            </table>
+            <p class="fine" style="margin-top:12px">キーは自分の PC にだけ保存され、Windows の機能で暗号化されます。Modelwright はサーバーを持たず、データは一切収集しません。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="unity">
+      <div class="wrap">
+        <h2>Unity との接続</h2>
+        <p class="sub">Unity 2022.3、Unity 6、Tuanjie に対応。Built-in / URP / HDRP のどれでも使えます。</p>
+        <ul class="tight">
+          <li>Engine ページでプロジェクトを追加して「Install plugin」を押せば、あとはアセットの「Send to Unity」を押すだけです。</li>
+          <li>エディターを開いていればすぐにインポートされ、マテリアル、プレハブ、LOD、コライダーが作られてシーンに配置されます。モーション付きのキャラクターは Animator まで設定されるので、Play を押せば動きます。</li>
+          <li>プラグインなしでも送信できます。その場合はファイルが <code>Assets/Modelwright/</code> に書き込まれ、あとは Unity の標準インポートに任せます。</li>
+          <li>プロジェクトに glTF インポーターがないときは、送信時に glTFast を入れるかどうか聞かれます（無料、おすすめ）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="issues">
+      <div class="wrap">
+        <h2>既知の問題</h2>
+        <ul class="tight">
+          <li>Windows 版のみ。対応エンジンは Unity だけです。</li>
+          <li>テストは主に Unity 6 で行っています。Unity 2022.3 と Tuanjie はあまりテストできていないので、問題があれば Issue で教えてください。</li>
+          <li>Tencent Hunyuan のクラウドモーションは、Unity でスキニングが崩れます（ファイル側の問題です）。Hunyuan でリギングしたキャラクターには、Motion studio の「Complete base motions (local)」でモーションを付けてください。</li>
+          <li>Motion studio のモーションはプロシージャル生成で、モーションキャプチャではありません。プロトタイプや試遊には十分ですが、より自然な動きが欲しいときは Mixamo を取り込んでください。</li>
+          <li>スカートや髪にクロスシミュレーションはありません。走るとスカートが脚を突き抜けることがあります。</li>
+          <li>ボーン付きのモデルは、ローカルでのポリゴン削減と LOD 生成ができません。</li>
+        </ul>
+        <p class="fine" style="margin-top:14px">バージョンごとの変更点は<a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.ja.md">更新履歴</a>にあります。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Modelwright · 無料で使えます（オープンソースではありません）。<a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE-en.txt">ライセンス</a> · サードパーティ製コンポーネント：<a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 不具合は <a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a> へ
+    </div>
+  </footer>
+</body>
+</html>

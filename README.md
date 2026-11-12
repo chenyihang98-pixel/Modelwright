@@ -1,3 +1,7 @@
+<h3 align="center">
+  简体中文 &nbsp;|&nbsp; <a href="README.en.md">English</a> &nbsp;|&nbsp; <a href="README.ja.md">日本語</a>
+</h3>
+
 <p align="center">
   <img src="docs/screenshots/02-home.png" alt="模匠首页" width="880">
 </p>
@@ -130,7 +134,3 @@ Bug 和建议提到 [Issues](https://github.com/chenyihang98-pixel/Modelwright/i
 ## 许可
 
 模匠免费使用，不开源，源码不公开，见 [许可协议](LICENSE.txt)（[English](LICENSE-en.txt)）。用到的第三方组件见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。
-
----
-
-**English** · Modelwright turns an image or a line of text into a game-ready 3D model and drops it into your Unity project. Generation runs on Tripo, Meshy or Tencent Hunyuan with your own API key; decimation, LODs, colliders and the motion tools run on your machine. Windows 10 / 11, free, closed source. The UI is Chinese by default (Settings → Language & about switches to English). Get the installer from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases/latest) — it is unsigned, so SmartScreen will ask once.

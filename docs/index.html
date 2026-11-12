@@ -60,15 +60,20 @@
     .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-right: 6px; }
     .tag.ok { color: var(--ok); border-color: rgba(52,211,153,.4); }
     .tag.warn { color: #fbbf24; border-color: rgba(251,191,36,.4); }
+    .lang { display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--raised); font-size: 15px; font-weight: 700; white-space: nowrap; }
+    .lang a, .lang span { padding: 5px 14px; border-radius: 999px; color: var(--muted); }
+    .lang a:hover { color: var(--fg); text-decoration: none; }
+    .lang .on { background: linear-gradient(135deg, var(--accent), #5b8cff); color: #fff; }
     footer { padding: 36px 0 60px; color: var(--subtle); font-size: 13px; border-top: 1px solid var(--line); }
     footer a { color: var(--muted); }
-    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav.links { display: none; } .hero { padding-top: 48px; } }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav.links { display: none; } .brand .en { display: none; } .lang a, .lang span { padding: 5px 10px; } .hero { padding-top: 48px; } }
   </style>
 </head>
 <body>
   <header class="top">
     <div class="wrap">
       <a class="brand" href="#"><img src="icon.png" alt="" width="28" height="28"><span class="zh">模匠</span><span class="en">Modelwright</span></a>
+      <div class="lang" aria-label="语言"><span class="on">简体中文</span><a href="en/">English</a><a href="ja/">日本語</a></div>
       <nav class="links">
         <a href="#video">演示视频</a>
         <a href="#features">能做什么</a>
