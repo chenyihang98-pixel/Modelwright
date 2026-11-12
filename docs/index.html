@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modelwright · 模匠 — 一键生成 3D 模型，直接进游戏引擎</title>
-  <meta name="description" content="Modelwright（模匠）：面向游戏开发者的 AI 3D 生成工作台。文字或图片进，游戏可用的模型出，直接送进 Unity 工程。Windows 桌面应用，使用你自己的云端 API 密钥。">
+  <title>模匠 Modelwright：一张图生成 3D 模型，一键送进 Unity</title>
+  <meta name="description" content="模匠（Modelwright）：一张图或一句话生成 3D 模型，减面、绑骨、加动作，一键送进 Unity。Windows 桌面应用，免费，用你自己的 API 密钥。">
   <link rel="icon" href="icon.png">
   <style>
     :root {
@@ -34,9 +34,6 @@
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; border: 1px solid var(--line); background: var(--raised); color: var(--fg); }
     .btn.primary { background: linear-gradient(135deg, var(--accent), #5b8cff); border-color: transparent; color: #fff; }
     .btn:hover { text-decoration: none; filter: brightness(1.08); }
-    details.older { margin-top: 10px; }
-    details.older > summary { cursor: pointer; color: var(--muted, inherit); font-size: 14px; }
-    details.older > ul { margin-top: 8px; }
     .fine { color: var(--subtle); font-size: 13px; }
     .shot { margin: 36px auto 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); max-width: 1000px; }
     .shot img { display: block; width: 100%; height: auto; }
@@ -73,12 +70,12 @@
     <div class="wrap">
       <a class="brand" href="#"><img src="icon.png" alt="" width="28" height="28"><span class="zh">模匠</span><span class="en">Modelwright</span></a>
       <nav class="links">
+        <a href="#video">演示视频</a>
         <a href="#features">能做什么</a>
         <a href="#shots">截图</a>
-        <a href="#video">演示视频</a>
-        <a href="#start">第一次使用</a>
-        <a href="#unity">连接 Unity</a>
-        <a href="#status">验证情况</a>
+        <a href="#start">上手</a>
+        <a href="#unity">连 Unity</a>
+        <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.md">更新日志</a>
         <a href="https://github.com/chenyihang98-pixel/Modelwright">GitHub</a>
       </nav>
     </div>
@@ -87,39 +84,39 @@
   <main>
     <div class="hero">
       <div class="wrap">
-        <h1>一键生成 3D 模型，<em>直接进游戏引擎</em></h1>
-        <p class="lead">文字或图片进，游戏可用的模型出——本地完成减面、LOD、碰撞体、轴心与尺寸，再直接送进你的 Unity 工程。生成由云端服务完成，用你自己的 API 密钥；本机不需要任何大模型权重。</p>
+        <h1>一张图生成 3D 模型，<em>一键送进 Unity</em></h1>
+        <p class="lead">图片或一句话进，能直接用的模型出。减面、LOD、碰撞体、绑骨、动作都在一个窗口里做完。免费，生成用你自己的 API 密钥。</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Setup-0.1.27-x64.exe">下载安装版 0.1.27</a>
           <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-Portable-0.1.27-x64.exe">便携版</a>
-          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-0.1.27-win.zip">免安装 zip</a>
+          <a class="btn" href="https://github.com/chenyihang98-pixel/Modelwright/releases/download/v0.1.27/Modelwright-0.1.27-win.zip">zip</a>
         </div>
-        <p class="fine"><a href="https://github.com/chenyihang98-pixel/Modelwright/releases"><img alt="累计下载（所有版本合计）" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fstarwright.xyz%2Fapi%2Fdownloads%2Fmodelwright&amp;query=%24.total&amp;label=%E7%B4%AF%E8%AE%A1%E4%B8%8B%E8%BD%BD&amp;suffix=%20%E6%AC%A1&amp;color=2b48f0&amp;cacheSeconds=1800" style="vertical-align:middle"></a> · Windows 10 / 11，64 位 · 安装版会自动更新 · 程序未签名，SmartScreen 提示时点「更多信息 → 仍要运行」 · SHA-256 见 <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Release 说明</a></p>
-        <div class="shot"><img src="screenshots/02-home.png" alt="模匠 Modelwright 首页：拖入图片一键生成，资产画廊" loading="eager"></div>
+        <p class="fine"><a href="https://github.com/chenyihang98-pixel/Modelwright/releases"><img alt="累计下载" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fstarwright.xyz%2Fapi%2Fdownloads%2Fmodelwright&amp;query=%24.total&amp;label=%E7%B4%AF%E8%AE%A1%E4%B8%8B%E8%BD%BD&amp;suffix=%20%E6%AC%A1&amp;color=2b48f0&amp;cacheSeconds=1800" style="vertical-align:middle"></a> · Windows 10 / 11 · 安装版会自动更新 · 没买代码签名，Windows 拦的时候点「更多信息 → 仍要运行」</p>
+        <div class="shot"><img src="screenshots/02-home.png" alt="模匠首页" loading="eager"></div>
       </div>
     </div>
 
     <section id="video">
       <div class="wrap">
         <h2>演示视频</h2>
-        <p class="sub">第二集：社区二创角色大肥鱼（DeepSeek 鲸鱼娘）——上集用一张设定图生成了 3D，这集在模匠里绑骨、生成待机 / 行走 / 奔跑三个动作，再一键送进 Unity 6 跑起来，星璇客串；片头是三格 AI 漫画，其余全程实录（1 分 54 秒）。</p>
+        <p class="sub">第二集：把大肥鱼带进三次元。绑骨、三个动作、一键进 Unity，1 分 54 秒。</p>
         <a class="shot" style="display:block;margin-top:0" href="https://www.bilibili.com/video/BV1YqpZ6kEw4" target="_blank" rel="noopener"><img src="bilibili-cover-ep2.png" alt="演示视频封面：将大肥鱼带入三次元" loading="lazy"></a>
-        <p class="fine" style="text-align:center;margin-top:14px"><a href="https://www.bilibili.com/video/BV1YqpZ6kEw4" target="_blank" rel="noopener">在 B 站观看第二集 →</a> · <a href="https://www.bilibili.com/video/BV1t2pZ6iEqh" target="_blank" rel="noopener">竖屏版</a> · <a href="https://www.bilibili.com/video/BV1VMHU6mEQt" target="_blank" rel="noopener">第一集：打破次元壁，让纸片人站进 Unity（1 分 46 秒）</a></p>
-        <p class="fine" style="text-align:center;margin-top:10px">角色「大肥鱼 / 鲸鱼娘」为社区二创形象：原型 上善无形，DeepSeek 女仆版二设 ZipZipPipe（CC BY-NC-SA 4.0）；设定图来自「鲸鱼娘开源资产库」。视频中的 3D 模型由模匠生成，按 CC BY-NC-SA 4.0 共享，非商业用途；与 DeepSeek 官方无关。</p>
+        <p class="fine" style="text-align:center;margin-top:14px"><a href="https://www.bilibili.com/video/BV1YqpZ6kEw4" target="_blank" rel="noopener">去 B 站看第二集 →</a> · <a href="https://www.bilibili.com/video/BV1t2pZ6iEqh" target="_blank" rel="noopener">竖屏版</a> · <a href="https://www.bilibili.com/video/BV1VMHU6mEQt" target="_blank" rel="noopener">第一集：让纸片人站进 Unity</a></p>
+        <p class="fine" style="text-align:center;margin-top:10px">大肥鱼（鲸鱼娘）是社区二创角色：原型 上善无形，女仆版二设 ZipZipPipe，设定图来自 <a href="https://github.com/TreapGoGo/deepseek-whale-girl" target="_blank" rel="noopener">鲸鱼娘开源资产库</a>，CC BY-NC-SA 4.0。视频里的模型按同一协议共享。</p>
       </div>
     </section>
 
     <section id="features">
       <div class="wrap">
-        <h2>云端生成之外的一切，都在本地做好</h2>
-        <p class="sub">生成只是一步。模匠把这一步前后的工作做成一条流水线，每一步都能看、能改、能验收。</p>
+        <h2>能做什么</h2>
+        <p class="sub">AI 生成的模型拿到手一般不能直接用。模匠把生成前后的事接成了一条线。</p>
         <div class="grid">
-          <div class="card"><span class="n">1</span><h3>准备输入</h3><p>图片自动抠图、构图、尺寸适配；拆分三视图 / 四视图设定图（任意网格、标签、特写框、地面线，自动判断视图方向归位）；一张正面图让概念图服务画出姿势一致的四视图；提示词优化（离线模板或你自己的大模型）；批量一行一个描述。</p></div>
-          <div class="card"><span class="n">2</span><h3>预设与预检</h3><p>14 种资产类型 × 8 种目标平台 × 5 种风格，自动换算面数预算、贴图尺寸、LOD、碰撞体、轴心与真实尺寸；「展示 / 影视级」一档直接要最高几何精度和 4K 贴图；花积分之前逐项预检图片、提示词、参数、费用与余额，相对视图镜像了会提醒并一键修复。</p></div>
-          <div class="card"><span class="n">3</span><h3>云端生成</h3><p>Tripo（中国区 / 国际区自动识别）、Meshy、腾讯混元生 3D，用你自己的密钥；内置离线演示服务，无需密钥即可走通整个流程。计费请求绝不自动重发。</p></div>
-          <div class="card"><span class="n">4</span><h3>本地后处理（免费）</h3><p>减面到预算、LOD 链、碰撞体、轴心与尺寸校正、Unity 贴图打包；资产页可多选批量处理，一次把一批道具从 PC 预算改成移动端预算。</p></div>
-          <div class="card"><span class="n">5</span><h3>三道关卡验收</h3><p>生成后、后处理后、导入 Unity 后各一道，给出 A–D 等级，每一项都说明问题和处理办法；Unity 那一关由插件回传的真实导入结果判定。</p></div>
-          <div class="card"><span class="n">6</span><h3>直达 Unity</h3><p>一键写入工程的 <code>Assets/Modelwright/</code>；装了插件会自动建材质、带 LODGroup 与碰撞体的预制体并放进场景。桌面端和插件只走本机回环地址。</p></div>
+          <div class="card"><span class="n">1</span><h3>生成</h3><p>图片或文字生成 3D，接 Tripo、Meshy、腾讯混元。三视图、四视图的设定图会自动拆开，也可以让一张正面图先画成四视图。</p></div>
+          <div class="card"><span class="n">2</span><h3>花钱之前先检查</h3><p>提交前能看到这一单大概花多少积分，图片和参数有问题会先提醒。会扣费的请求不会自动重发。</p></div>
+          <div class="card"><span class="n">3</span><h3>本地后处理</h3><p>减面、LOD、碰撞体、轴心和尺寸，按「资产类型 × 目标平台」的预设一次做完，不花积分。</p></div>
+          <div class="card"><span class="n">4</span><h3>绑骨和动作</h3><p>云端绑骨；动作设计台里自己调待机、走、跑、跳，或者导入 Mixamo 的动作。试机场和靶场可以直接操控角色看效果。</p></div>
+          <div class="card"><span class="n">5</span><h3>进 Unity</h3><p>装好插件后一键发送，材质、预制体（带 LOD 和碰撞体）、Animator 都建好，直接放进场景。</p></div>
+          <div class="card"><span class="n">6</span><h3>资产库</h3><p>版本历史、文件夹、搜索、回收站，导出 GLB / OBJ / STL / PLY。批量任务排队跑，关掉应用也不丢。</p></div>
         </div>
       </div>
     </section>
@@ -127,44 +124,42 @@
     <section id="shots">
       <div class="wrap">
         <h2>截图</h2>
-        <p class="sub">界面为简体中文，可切换英文。</p>
+        <p class="sub">界面是中文，可以切成英文。</p>
         <div class="gallery">
-          <figure><img src="screenshots/01-onboarding.png" alt="首次引导" loading="lazy"><figcaption>首次引导：选生成服务、连接 Unity，也可以随时跳过</figcaption></figure>
-          <figure><img src="screenshots/03-workspace.png" alt="工作台" loading="lazy"><figcaption>工作台：PBR / 白模 / 法线 / UV 显示，模型信息与资产列表</figcaption></figure>
-          <figure><img src="screenshots/04-generate-preflight.png" alt="预检" loading="lazy"><figcaption>花积分之前逐项预检：提示词、预设、参数、费用</figcaption></figure>
-          <figure><img src="screenshots/05-postprocess.png" alt="后处理" loading="lazy"><figcaption>本地后处理：减面、LOD、碰撞体，处理前后对比与验收清单</figcaption></figure>
-          <figure><img src="screenshots/06-assets.png" alt="资产库" loading="lazy"><figcaption>资产库：分类、评级、PBR / 骨骼 / LOD 标记、已发送标记</figcaption></figure>
-          <figure><img src="screenshots/07-settings-providers.png" alt="生成服务" loading="lazy"><figcaption>生成服务：填入你自己的密钥，自动识别区域，余额可见</figcaption></figure>
-          <figure><img src="screenshots/08-animation.png" alt="绑骨与动作" loading="lazy"><figcaption>绑骨与动作：Tripo 绑骨 → 待机 / 行走 / 奔跑，应用里直接播放</figcaption></figure>
-          <figure><img src="unity-run.gif" alt="星璇在 Unity 里奔跑" loading="lazy"><figcaption>送进 Unity 6 后按下 Play：原地奔跑（0.1.4 实录）</figcaption></figure>
-          <figure><img src="screenshots/10-dafeiyu-animation.png" alt="大肥鱼的绑骨与动作" loading="lazy"><figcaption>第二集：大肥鱼绑骨后生成三个动作，应用里直接播放（0.1.5 实录）</figcaption></figure>
-          <figure><img src="screenshots/11-dafeiyu-unity-play.png" alt="大肥鱼在 Unity 里奔跑，星璇待机" loading="lazy"><figcaption>第二集：送进 Unity 6 后按下 Play，大肥鱼原地奔跑、星璇待机</figcaption></figure>
+          <figure><img src="screenshots/03-workspace.png" alt="工作台" loading="lazy"><figcaption>工作台</figcaption></figure>
+          <figure><img src="screenshots/04-generate-preflight.png" alt="预检" loading="lazy"><figcaption>提交前的检查和费用</figcaption></figure>
+          <figure><img src="screenshots/05-postprocess.png" alt="后处理" loading="lazy"><figcaption>本地后处理，前后对比</figcaption></figure>
+          <figure><img src="screenshots/06-assets.png" alt="资产库" loading="lazy"><figcaption>资产库</figcaption></figure>
+          <figure><img src="screenshots/07-settings-providers.png" alt="生成服务" loading="lazy"><figcaption>填自己的密钥，余额看得到</figcaption></figure>
+          <figure><img src="screenshots/08-animation.png" alt="绑骨与动作" loading="lazy"><figcaption>绑骨和动作</figcaption></figure>
+          <figure><img src="unity-run.gif" alt="星璇在 Unity 里奔跑" loading="lazy"><figcaption>进 Unity 后按 Play</figcaption></figure>
+          <figure><img src="screenshots/10-dafeiyu-animation.png" alt="大肥鱼的绑骨与动作" loading="lazy"><figcaption>大肥鱼绑骨后的三个动作</figcaption></figure>
+          <figure><img src="screenshots/11-dafeiyu-unity-play.png" alt="大肥鱼在 Unity 里奔跑，星璇待机" loading="lazy"><figcaption>大肥鱼在 Unity 里跑，星璇待机</figcaption></figure>
         </div>
       </div>
     </section>
 
     <section id="start">
       <div class="wrap">
-        <h2>第一次使用</h2>
+        <h2>上手</h2>
         <div class="two">
           <div>
-            <h3>四步走通流程</h3>
+            <h3>三步</h3>
             <ul class="tight">
-              <li>打开应用进入引导：选择生成服务。还没有密钥就选 <b>演示（离线）</b>——返回内置示例模型（带「示例」标记），用来走通预设、预检、后处理、验收、送进 Unity。</li>
-              <li>（可选）连接 Unity：应用会列出 Unity Hub / 团结 Hub 里的工程，也可以粘贴工程路径；点「安装插件」。</li>
-              <li>在首页把一张图片拖进「拖入图片，一键生成并送进 Unity」，或者输入一句话描述。</li>
-              <li>结果出现在首页和「资产」页；在「工作台」里查看网格、贴图、骨骼，做后处理、导出或发送到 Unity。</li>
+              <li>装好打开，跟着引导选一个生成服务。还没有密钥就选「演示（离线）」，它给的是内置的示例模型，用来熟悉流程。</li>
+              <li>在首页拖一张图进去，或者写一句描述。</li>
+              <li>结果在「资产」页。进「工作台」可以看网格和贴图、做后处理、绑骨、发送到 Unity。</li>
             </ul>
           </div>
           <div>
-            <h3>配置真实的生成服务</h3>
+            <h3>填密钥</h3>
             <table>
-              <tr><th>服务</th><th>获取密钥</th></tr>
-              <tr><td>Tripo（推荐）</td><td><a href="https://developers.tripo3d.com">中国区</a> / <a href="https://developers.tripo3d.ai">国际区</a>，填入后自动识别</td></tr>
-              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>（会员制：先订阅 Pro 会员，API 才可用）</td></tr>
-              <tr><td>腾讯混元生 3D（TokenHub）</td><td><a href="https://console.cloud.tencent.com/tokenhub/apikey">腾讯云 TokenHub</a>：「启用管理」按模型领取免费额度或开通后付费，「API Key 管理」创建 sk- 开头的 Key（地域选广州）；应用内有带截图的接入指引</td></tr>
+              <tr><th>服务</th><th>密钥在哪拿</th></tr>
+              <tr><td>Tripo（推荐）</td><td><a href="https://developers.tripo3d.com">中国区</a> / <a href="https://developers.tripo3d.ai">国际区</a>，两个区账号不通用，各填各的</td></tr>
+              <tr><td>Meshy</td><td><a href="https://www.meshy.ai/developers/keys">meshy.ai</a>，要先订阅 Pro</td></tr>
+              <tr><td>腾讯混元生 3D</td><td><a href="https://console.cloud.tencent.com/tokenhub/apikey">TokenHub</a>，先开通 HY-3D 模型再建 Key，地域选广州</td></tr>
             </table>
-            <p class="fine" style="margin-top:12px">密钥只写入、不回显，由 Windows 加密保存在本机；界面、日志和任务记录里都不会出现密钥原文。网络默认跟随系统代理。</p>
+            <p class="fine" style="margin-top:12px">密钥只存在你自己电脑上，用 Windows 自带的加密保存。模匠没有服务器，不收集任何数据。</p>
           </div>
         </div>
       </div>
@@ -172,89 +167,36 @@
 
     <section id="unity">
       <div class="wrap">
-        <h2>连接 Unity</h2>
-        <p class="sub">支持 Unity 2022.3 LTS、团结引擎 1.x、Unity 6；Built-in / URP / HDRP。发送之后得到什么，取决于工程当时的状态：</p>
-        <table>
-          <tr><th>工程状态</th><th>结果</th></tr>
-          <tr><td>已装插件，编辑器开着（已连接）</td><td>立即导入：按渲染管线生成材质，做好带 LOD 和碰撞体的预制体，放进场景，并把导入结果回传，验收清单的「Unity 内」一关据此判定</td></tr>
-          <tr><td>已装插件，编辑器没开</td><td>文件先写进工程，下次打开或刷新时由插件完整导入（不放进场景，没有回执）</td></tr>
-          <tr><td>没装插件</td><td>只写入文件到 <code>Assets/Modelwright/</code>，由 Unity 按默认方式导入，没有预制体</td></tr>
-        </table>
-        <p class="fine" style="margin-top:12px">GLB 需要 glTF 导入器（glTFast）：工程里没有时，应用会让你选择「安装 glTFast（推荐）／云端转成 FBX／本地导出 OBJ」。带骨骼的模型在装了 glTFast 的工程里可以直接按 GLB 发送（Generic 骨架，不花积分）。</p>
+        <h2>连 Unity</h2>
+        <p class="sub">支持 Unity 2022.3、Unity 6 和团结引擎，Built-in / URP / HDRP 都行。</p>
+        <ul class="tight">
+          <li>在「引擎」页添加工程，点「安装插件」，之后在资产上点发送就行。</li>
+          <li>编辑器开着的话会立刻导入：材质、预制体、LOD、碰撞体都建好并放进场景；带动作的角色会配好 Animator，按 Play 就能动。</li>
+          <li>没装插件也能发送，只是把文件写进 <code>Assets/Modelwright/</code>，剩下的交给 Unity 默认处理。</li>
+          <li>工程里没有 glTF 导入器时，发送会问要不要装 glTFast（免费，推荐装）。</li>
+        </ul>
       </div>
     </section>
 
-    <section id="status">
+    <section id="issues">
       <div class="wrap">
-        <h2>验证情况与已知限制</h2>
-        <div class="two">
-          <div>
-            <h3><span class="tag ok">已验证</span></h3>
-            <ul class="tight">
-              <li>真实应用的自动化测试覆盖各个页面，另有七段完整的用户旅程和全部界面在两种窗口尺寸、两种语言下的巡检。</li>
-              <li>付费流程用本机模拟的接口逐请求计数：一次提交（包括双击、重试、批量）只发出应有的那些计费请求。</li>
-              <li>三个发布文件由同一份源码构建；安装目录和便携版通过自检（抠图引擎、网格管线、Draco 解码、第三方许可清单）。</li>
-              <li>用假密钥访问各服务商真实接口：地址、TLS、鉴权失败识别正确。</li>
-              <li><b>Tripo 真实密钥（中国区）</b>：图片生成成功；0.1.2 把「绑骨 → 动作」整条链逐项实测跑通——双足角色 v1.0 + 原生骨骼命名，idle / walk / run 等动作、多动作 FBX、原地播放全部成功，四足生物 v2.5 + 四足行走成功。</li>
-              <li><b>Unity 6000.6.4f1 真实编辑器</b>（2026-10-08）：编辑器开着时安装插件、装 glTFast、自动连接、发送 GLB、生成材质 / 预制体并放进场景、回传结果；发现的两个问题已在 0.1.1 修复。2026-10-09 用 0.1.2 发送带动作的角色：Humanoid Avatar 有效，Animator 自动配好 idle / walk / run 三个动作。<b>2026-10-12 用 0.1.4 重新目视验收</b>：Tripo 绑骨 + 三个动作的角色送进 Unity 6 后进 Play 模式，待机 / 行走 / 奔跑都在原地正常播放、朝向正确——0.1.2 / 0.1.3 在 Unity 6 里一进 Play 角色就消失的问题已修。</li>
-              <li><b>Meshy 与混元真实密钥</b>（2026-10-09）：Meshy 跑通图生 3D → 绑骨 → 动作 → Unity；混元（TokenHub）跑通图生 3D → 绑骨 → 预设动作 / 文字描述动作 → 格式转换 → Unity。这两条链只核对了 Unity 的回执，Play 模式还没有目视验收。</li>
-              <li><b>重新发送保护与动作一致</b>（2026-11-10，0.1.27）：插件 0.1.32 只清理确实没人用的裙摆 / 面部网格副本——0.1.31 上被预制体里 MeshFilter / 碰撞体 / 脚本字段引用的副本会被删，0.1.32 上全部保留并在回执写明谁在用；真实 Unity 6000.6.4f1 升级链里旧插件运行中、新插件未重新编译时两次拒写且零写入，重新编译后重试即导入。混元人形动作模板烘焙 / 导出对预览 ≤ 0.0024 mm（修前 6–43 mm），模型自带的稀疏动作在烘焙和导出里与原文件逐顶点相同；Unity 试玩 69 个起停 / 走跑窗口全部在验收线内，走 → 跑最低 −9.84 → −1.52 mm。单元测试 4645 通过，端到端 348 条中 346 条通过，2 条需联网或打包环境的跳过。</li>
-              <li><b>Unity 保留原蒙皮与走跑切换</b>（2026-11-09，0.1.26）：插件 0.1.29 不再自动改动没有裙摆辅助骨的模型——旧工程经引擎页「升级」后再发送一次，预制体回到模型文件的 24 骨原蒙皮，6 段动作 × 4 个时刻与原导入偏差 0（修前最大 0.50 m）；带辅助骨的拼装角色原样保留、辅助骨由动作带动；用户的场景引用、组件和挂件保留并说明。走 ↔ 跑最坏下陷 102 / 72 mm → 0（Unity 演示 90 / 75 → 0）；放进试机场的回执与首次发送不弄脏场景在真实 Unity 6000.6.4f1 里验证。单元测试 4602 通过，端到端 348 条中 346 条通过（3 条过时的测试期望改正后重跑通过），2 条需联网或打包环境的跳过。</li>
-              <li><b>步幅范围与接缝保护</b>（2026-11-08，0.1.25）：走路步幅按每副骨架能走的范围核对，复核用的 Tripo 骨架上限 1.7 → 1.45（缩小、放大 10 倍一致），超出的新动作在列表、烘焙、导出处被拒并说明原因，旧动作照旧播放；修订 1–4 与 0.1.24 逐字节相同；接缝修复不再修连到开口的接缝，混元人形结果与 0.1.24 逐值相同；同一混元人形从接缝修复、补全基础动作、退出重开到导出，同一个文件在 Unity 6000.6.4f1 里导入无警告并在 Play 模式实时播放；单元测试 4575 通过、相关端到端 46 条通过。</li>
-            </ul>
-            <details class="older">
-              <summary>更早版本的验证记录（0.1.5 – 0.1.24）</summary>
-              <ul class="tight">
-              <li><b>走路落地与开放面片</b>（2026-11-08，0.1.24）：模板修订 4 让前伸够不到落脚点的腿由骨盆略降来接住，复核的两个人形落地速度差 0.71 / 1.20 → 0.13 / 0.19 m/s；烘焙出的 GLB 在独立加载器和 Unity 6000.6.4f1 里读回，落地数据与合成值逐帧一致；修订 1–3 与 0.1.23 逐字节相同；接缝修复不再粘住只沿边相接的独立面片，混元人形结果与 0.1.23 逐字节相同；单元测试 4550 通过、相关端到端 46 条通过。</li>
-              <li><b>走路与蒙皮接缝</b>（2026-11-08，0.1.23）：用已有的真实混元人形 FBX（零积分）——模板走路两膝侧鼓 192 mm → 9 mm，摆动中被拉直的帧 → 0；「接缝权重统一」确认并修复 131 处会裂开的接缝，走路时最大开缝 95–100 mm → 0.97 mm，白模上看不到裂缝；同一份最终 GLB 在应用重开、导出、独立加载器和 Unity 6000.6.4f1（插件 0.1.26）里结果一致；0.1.23 之前保存的走路在新版里烘焙逐字节不变；单元测试 4526 通过、相关端到端 75 条通过。</li>
-              <li><b>整图主线闭环</b>（2026-11-01，0.1.21）：一张二次元参考图经 Tripo 生成与 v3 绑骨、动作导入与部位摆动、试机场与靶场、烘焙、GLB 发送，在 Unity 6 里实播并保存重开都走通；人形预设在 Tripo 上默认三角面（四边面绑骨只交回 FBX），绑好骨的人形自动面向 +Z，开镜第一发从当时姿态进入，烘焙的动作带循环声明，部位摆动不再保存骨架上没有的部位——已安装版真实键鼠两个场地帧时间 p99 约 14 ms，Unity 里一次性片段停在末帧；单元测试 4044 通过。没做：其他图片 / 服务商、手拼角色、非人形。</li>
-              <li><b>0.1.19 发布后复核补丁、有限收口、动作连续性与短实测</b>（2026-10-29，0.1.20）：Meshy 读不懂原任务状态时不再新建；动作面板保存状态按写入内容算、「重新读取」真的读回且视口跟着换；Unity 插件 0.1.22 让每个片段有自己的名字；两个场地共用的动作播放器从当时的姿态交接——快速启停不再先扑向走路，装填 0.12 秒、腰射第一发 0.14 秒从当时姿态进入（子弹不等动画），跳跃从跑步进入，缺跳跃的角色落地后待机继续循环；贴着箱子转镜头时相机不再扑到背后挡住准星；按 Tab 不再粘键，退出场地释放 GPU 资源；资产库永久删除不再留下空文件夹——最终安装包上系统级真实输入的短操作帧时间 p99 约 14.3 ms，两发对靶都命中；单元测试 4026 通过。没做：较弱机器的帧时间、Unity 2022.3 / 团结引擎实机。</li>
-              <li><b>主 U 稳定交付</b>（2026-10-28，0.1.19 发布前）：一次性动作（倒地、开火、装填）在资产库视口和 Unity 里都只播一次、停在末尾，待机照常循环——最终安装包上本机资产库的标准 U 倒地停在 4.4 / 4.4、两秒内画面零变化，25 段都在；Unity 插件 0.1.20 走正常升级路径（旧应用装 0.1.19 → 新应用升级，文件与安装包附带的逐一相同 → 打开的编辑器里「重新生成材质与预制体」），场景保存重开后倒地不再起身、待机循环、连续播放六步通过；动作文件三处保存互相不覆盖；Meshy 文字动作查询失败不新建任务、不重买片段（可控响应测试）；「导入模型」按钮 + Windows 打开对话框导入小样本成功；两场真实鼠标键盘短整合平均 120 帧/秒、p95 14.1 ms、最长 21 ms；单元测试 3927 通过。没做：较弱机器的帧时间；Unity 2022.3 / 团结引擎上的新插件只做了离线编译。</li>
-              <li><b>标准人形 U 的三家绑骨、动作姿态修正、双场地输入与性能</b>（2026-10-28，0.1.19）：单元测试 3900 通过、4 跳过（305 个文件）；e2e 73 条通过、1 条跳过；真实网格上标准 U 的持枪待机整周期侧倾从约 21° 回到与源动作相差 0.06°，只调换骨骼存储顺序结果不变；旧动作用「按原附件更新」在实验副本上验证了中途另存被拒、歧义 / 缺源保留、结果可重复，正式主 U 的 25 段已更新；Unity 6000.6.4f1：安装版正常导出的同一文件导入 → 场景保存、关闭、重开一致 → PlayMode 连续播放完整待机与走 / 跑 / 开火 / 装填 / 倒地全部进入、待机侧倾 −1.17 … 0.88°；安装版真实鼠标键盘（2560 × 1440 @ 144 Hz，窗口 2048 × 1104）：靶场 100 秒、试机场 80 秒，平均约 120 帧/秒、p95 14.1 ms、p99 ≤ 20.6 ms、没有超过 50 ms 的帧，第一次点击只接管、右键瞄准时左键开火、Shift 切换、Esc 暂停不返回、AI / 无敌开关即时生效、最小化即暂停且不计时；导出文件作为新资产导入本机资产库后视口、两场、再导出都能用。没做：Tripo v3.0 的云端预设、Meshy 文生 T2.5、混元组件生成 / 独立 UV；大肥鱼待机的头部侧偏与裙摆拉伸在原生动作里就有，没有重绑；生成路线与手拼路线留到下一版。</li>
-              <li><b>闭环整改：真实输入、标准样本尺度、动作组合、出口到 Unity</b>（2026-10-28，0.1.18）：单元测试 3774 通过、4 跳过（293 个文件）；e2e 3 条通过；隔离实验：Xbot 尺度（94 倍 → 1 倍）、A 回归与滑步、赏金猎人移动连发 / 装填 / 死亡复活 / Shift / 导出、大肥鱼原生出口、导出 GLB 的 Unity 探针（A 22 状态、赏金猎人两次导入一致）。真机：安装版 0.1.18 真机：点一下画面即锁定并开始，左键一次弹药 30 → 29，Shift 一次切到"奔跑"、再按切回，Esc 暂停（"已暂停 · 点击画面继续"）、点击恢复；A 的正式动作数据受控更新完成——备份后用动作设计台重新导入同一批 14 条 FBX + Soldier / Xbot GLB，25 段同名替换、无重复、无配方丢失，离开再进靶场读到 25 段。手拼路线仍缺可用人形绑定。</li>
-              <li><b>角色流程整改</b>（2026-10-27，0.1.17）：单元测试 3768 通过（290 个文件）；e2e cloud modules / submitted / 动作设计台 3 条通过；真实角色 + 真实 Mixamo 动作的实验用例：朝向四视图、未开始不掉血、三次死亡复活不残留、Esc 暂停、跑步原地化、头部俯仰 20.8° → 8.1°、滑步 0.60 → 0.15 m/s、部位配方保存重载、GLB 导出重载（骨向误差 < 1e-6°）再导入、组装体本地绑定（只找到尾巴，缺口如实记录）。</li>
-              <li><b>靶场第二轮：竞技场、哨兵、真 Mixamo 动作</b>（2026-10-27，0.1.16）：单元测试 3758 通过（288 个文件）；e2e cloud modules（含试机场与靶场）/ submitted / 动作设计台 3 条通过；真机：从 Mixamo 下载的 14 条步枪动作导到 Tripo 绑骨角色（14 段、23 个关节对上、13 个角色全认出），逐状态截图核对走 / 跑 / 侧移 / 瞄准 / 开火 / 装填 / 倒地复活 / 挥刀。查出并修了 0.1.15 的四处硬伤：HUD 被画布盖住从未显示（试机场同样）、A / D 左右镜像（两个游戏）、枪口朝后朝下、镜头贴脸。</li>
-              <li><b>靶场、动作导入、组装台第二轮、去外轮廓线</b>（2026-10-27，0.1.15）：单元测试 3757 通过（288 个文件）；e2e 组装台 / 撤销 / 文件夹 / 回退 / cloud modules（含试机场与靶场）/ 动作设计台（Mixamo 骨架样例导到小机器人：4 段片段、试机场 8 段、靶场认出、烘焙 8 段动画）13 条通过；真机：已绑骨的 Tripo FBX 角色导入 Soldier / Xbot 11 段（23 个关节对上），靶场各就各位；从文字出概念图 → 生成并绑骨 → Tripo 射击 / 挥砍预设 → 导入 Mixamo → 靶场开火、挥砍；大肥鱼身体用去线后的视图重做。抓到并修了三处（只导入不设计时动作文件被当空文件删掉；打到墙也算命中；Q 版角色拿真尺寸步枪）。</li>
-              <li><b>资产文件夹、存储把关、Ctrl+Z</b>（2026-10-26，0.1.14）：单元测试 3705 通过（280 个文件）；端到端 folders.spec 2/2、undo.spec 1/1、back.spec 2/2 通过（真实应用），回归 assets / home / settings / workspace 72 条通过 71 条（唯一失败是菜单多了一项的旧断言，已改），构建好的程序在本机真实库的隔离副本上核对了文件夹、存储位置块与 Ctrl+Z。真实库升级预演：29 个资产行数不变，「人形角色」夹自动收进 18 个相关资产。存储审计抓到一处真问题——部件组装的 GLB 一直写在系统临时目录且从不清理（本机约 892 MB）——已改写到应用自己的临时目录并在启动时清掉旧目录。</li>
-              <li><b>页面级回退</b>（2026-10-26，0.1.13）：单元测试 3686 通过（277 个文件）；端到端 back.spec 2/2 通过（页面级回退全流程、密钥草稿的离开守卫），重跑 home / settings / close-jobs / workspace / assets 88/88 通过，本机构建核对返回键、Esc、离开守卫均按规则工作。第一次在真实应用里跑就抓到一个真问题——由直接改 hash 产生的历史条目没有路由序号，离开守卫拦不住回到它的导航——已修（落到这种条目时标记为起点，图片编辑器的跳转改走路由器）。</li>
-              <li><b>拆件建模第一阶段</b>（2026-10-26，0.1.12）：单元测试 3676 通过（276 个文件）；真实 Tripo 积分——大肥鱼 41 张部件图（国际区）、10 件部件模型（头五次，中国区），八次组装；头的转台 36 帧逐帧看过（一张脸、后脑干净、有耳朵），六件各 12 帧看过；组装体与整身直出版并排对照：部件本身干净，拼装靠固定规则给起点、手动组装收尾；带动作的整身大肥鱼发送到 Unity 6000.6.4f1 并放进试机场，批处理 PlayMode 测试通过（巡逻 2.435 m、Animator 处于 walk、蒙皮包围盒随动作变化）。端到端四个门禁 73 条中 72 条通过，剩 1 条是本机窗口 1103×703 的环境差异。</li>
-              <li><b>绑定姿势修复、生成上限与极限测试</b>（2026-10-25，0.1.11）：绑定姿势单元测试（弓背的节点姿势经 ×0.01 的骨架节点摆回绑定姿势，本就一致的骨架不动），预设映射 29 项（展示级向服务商要档位上限、空面板不评视图数）；端到端——示例机器人的动作设计台 + 试机场、本机真实大肥鱼 Tripo FBX（站直、脸正常、空格跳稳定）；真实 Tripo 两轮极限测试——整体顶配 70 积分：1,887,300 面、8192² 贴图、59 MB，后处理不减面、质量 A；自动分部件 90 积分：15 件、每件一个壳但都有开放边、头发脸躯干切成一块、眼睛鞋尾巴手臂鱼鳍分开、15 张 8K 贴图。逐边统计证实 v1 / v5 都是开放边 0 的单一封闭壳：被遮挡区域不存在是生成方式所致，不是参数。</li>
-              <li><b>动作设计台与自动关节映射</b>（2026-10-25，0.1.10）：映射 8 组骨架的单元测试（真实 Tripo 大肥鱼 41 根含扭转骨、Mixamo、混元式根骨、示例机器人、名字全乱的机器人、四足加尾巴、神经元链、用户修正），模板 12 项（独立前向运动学验证步态相位、膝盖时机、首尾闭合、跳跃起止、挥手单臂、四足对角、厘米骨架与米骨架一致），three.js 回放 3 项，流水线烘焙 4 项（glTF 校验 0 错误）；真实应用端到端——示例机器人映射 13 根为人形 → 保存 run → 试机场 4 段、Shift 用设计的 run → 烘焙出带 4 段动作的新版本；本机真实大肥鱼 Tripo FBX——映射为人形、保存 run 和 jump、试机场 5 段：W 走 Armature|walk、Shift 跑设计的 run、空格跳设计的 jump；Unity 6000.6.4f1 批处理探针导入烘焙后的机器人 GLB：导入成功、无警告、Animator 8 个状态，设计的 jump 中心高度 0.61 → 0.86 m、run 前后跨度 0.54 → 0.82 m，无 NaN。真实检验里发现并修了三处：根骨和 Pelvis 被当成部件摆动把角色掀翻、四足躯干链被判成腿、跳跃首帧肘部未归零。</li>
-              <li><b>真实检验与内置试机场</b>（2026-10-25，0.1.9）：端到端在真实应用里导入球加四手的 GLB → 神经元分析判定 ok、4 个神经元 → 绑定 → 新版本 animated、3 段动作 → 视口动画条 → 试机场里 3 段动作、按 W 切到 walk；Unity 6000.6.4f1 PlayMode 测试打开插件的试机场场景——角色先站着、巡逻开始后 2.5 秒走了 2.43 m、Animator 处于 walk、摄像机在上方朝向角色、蒙皮包围盒随动作变化（1 项通过）；Meshy 的 Walking.fbx 作为外部动作挂到 Tripo 绑骨的星璇上，探针回执 4 段动作、MeshyWalk 状态播放时包围盒在变；10 个示例模型与 5 个真实 GLB 的分析普查（小鸡 2 条腿、椅子 / 石头 / 绳结判整体、大肥鱼呆毛不再是头）。真实检验里发现并修了两处：绑定后的版本被标成静态；试机场画出了碰撞体凸包。</li>
-              <li><b>神经元绑定、试机场与外部动作文件</b>（2026-10-25，0.1.8）：合成形状的单元测试（球加四手找到 4 个部件、火柴人判为人形并从脚尖判出朝向、立方体判为整体、开放片判为不封闭）；流水线写出骨骼、四级 LOD 都有权重、三段动作、glTF 校验无错误；Unity 6000.6.4f1 批处理探针导入该 GLB——4 个蒙皮 LOD、7 根骨骼、Animator 3 个状态、行走和动作时的包围盒在变；试机场打开后场景有跟随摄像机、灯光、地面和挂着控制器的角色；外部动作文件的库存与移除有单元测试。没有在真实编辑器里按 Play 走过试机场，Mixamo 的真实文件没有实测。</li>
-              <li><b>面部平滑、裙摆四象限与混元撕裂蒙皮</b>（2026-10-13，0.1.7）：Unity 6000.6.4f1 批处理探针（插件自己的导入管线，静止 / 摆姿网格离线渲染）——大肥鱼 8 组画上去的五官找到 7 组放回皮肤、5633 个顶点移动，静止姿势渲染里眼窝消失，三个动作的包围盒不变；星璇 4 个象限辅助骨、1727 个顶点改刷；混元动作 FBX 的 skinStretch 1.67 触发警告，Tripo / Meshy 的文件无警告。预览器的面部平滑与裙摆四象限各有单元测试，「不是设定图」有端到端测试。没有在 Play 模式目视裙摆四象限的跟随角度。</li>
-              <li><b>单图误判成设定图的修复</b>（2026-10-13，0.1.6）：用触发问题的两张大肥鱼 A 姿势瓦片（原图与 512 px 缩图）和五张真实设定图（鲸鱼娘资产库三视图、两张 Banana Pro 四视图、仓库自带两张）复测——瓦片不再被判为设定图，五张设定图全部仍被识别；单元测试覆盖「被竖缝切开的一张图」与「并排的两个对称道具视图」两种边界。</li>
-              <li><b>裙摆保形与大肥鱼全链路</b>（2026-10-12，0.1.5）：星璇在 Unity 6000.6.4f1 的 Play 模式里 idle / walk / run，裙子不再翻板（原地更新、新副本两条路径）；大肥鱼（DeepSeek 鲸鱼娘，社区角色）从三视图设定图到拆分归位、预检镜像修复、展示级生成、绑骨，验收 A；用一张正面图生成的 A 姿势四视图再生成一次，两只手都是干净的五指。</li>
-              </ul>
-            </details>
-          </div>
-          <div>
-            <h3><span class="tag warn">尚未验证</span></h3>
-            <ul class="tight">
-              <li><b>Meshy、混元的其余接口</b>：贴图、重拓扑、多视图、文生 3D，以及混元的极速版、3.0 低模和国际站，仍只用模拟服务测试过。第一次请用少量积分试一次。</li>
-              <li><b>混元动作版本在 Unity 里的蒙皮</b>：0.1.7 查明是文件本身的绑定矩阵与层级对不上（three.js、Unity、混元自己的转换都撕裂），不是导入设置能修的；插件测出撕裂就报警告、验收清单按问题处理，请改用 Tripo / Meshy 的动作版本或重新绑骨。Meshy 带动作版本的 Play 模式同样还没有目视验收。</li>
-              <li><b>Unity 2022.3 与团结引擎</b>：插件通过了离线编译检查，尚未在这两种真实编辑器里验收。</li>
-              <li>当前版本的完整安装 / 卸载流程没有重新跑过（本机验证用的是运行目录换包）；0.1.14 的卸载程序装到临时目录再静默卸载验证过，安装版已在 Windows 11 上实际安装并运行。</li>
-              <li><b>神经元绑定与试机场的边界</b>：部件只从身体上长一层（手指、头上的耳朵并进所在部件）；紧贴身体的手臂、裙子里的腿几何上分不出来（面板按资产类型提示）；动作是程序化摆动不是步态，脚不贴地；细于一格体素的部件会被忽略（可选「精细 96」）；既没有腿也没有粗头的模型朝向按 +Z 假定。内置试机场没有物理引擎（木箱是方块碰撞，没有坡和台阶）；真实的非人形生成模型还没有拿到手测；Mixamo 的真实下载文件已在 0.1.16 实测（14 条步枪动作导到 Tripo 绑骨角色逐个对过），其他来源的动作文件按同一套关节角色重定向，没有逐一测。</li>
-              <li><b>动作设计台的边界</b>：模板是程序化动作，不是动作捕捉——人形走路有落脚和两骨 IK，但步幅、屈膝比真人小，蹬地时前掌会压进地面几毫米，没有转身、坡道和全身 IK；想要更真的动作仍走服务商动作库或外部 FBX；镜像骨架不在支持范围；接缝权重统一修好的接缝是拉伸而不是平滑过渡，连到裙摆、袖口等开口的整条接缝不修；FBX 版本的原文件不会被就地改写，设计或导入的动作用动作面板的「导出带动作的 GLB 文件…」带出应用（可再发送到 Unity）；映射依赖"身体大致直立、左右对称"，躺着的、单腿的、多头的骨架需要手动修正。</li>
-              <li><b>慢跑与模型自带动作的边界</b>：慢跑（修订 6）还不是默认基础动作，只在一个两只脚静止等高的人形上逐项核对过；应用试机场停下时有一帧轻微下顿；自带 Running 的角色在 Unity 试玩里起跑 / 停下仍多陷 2.8 / 5.3 mm，跑转走有一帧骨盆变化略超验收线；两只脚静止不等高、鞋尖很长的模型跑起来一只脚很少着地、鞋尖会滑。模型自带的、只给部分关节打关键帧的动作在应用视口里按绑定姿势补默认值，个别模型会与导出文件和引擎里差几毫米（烘焙和导出按原文件）。</li>
-              <li><b>极限测试与分部件建模的边界</b>：极限测试只跑了一个角色、每轮一次，定的是基线不是规则；被遮挡区域不存在和"画上去的线变成浮雕"（睫毛成鳍、瞳孔成凸环、刘海在额头刻沟）这两件事这一版只是查清了，拆件建模当时只有设计草案（0.1.12 起有了第一阶段，见下一条），「部件补全」接口还没接入；8K 贴图与 200 万面的结果文件很大（59 MB / 104 MB），Tripo CDN 慢时一单要 20 分钟。</li>
-              <li><b>拆件建模的边界</b>：只跑了一个角色（大肥鱼）：阈值是初值；组装的固定规则（§7c）给的是起点，头发在后脑仍有空隙、尾巴根藏在裙后，最后要在手动组装面板里摆；穿插检查、组装后减面、对组装版绑骨、部件补全（Tripo mesh/complete）、C3 / C6 检查、模具的导出和仓库都还没有。"只画一对鳍"这类小附件的部件图图像模型画不好（五次都带头），已并入头发。中国区的图像任务跑 5 分钟会被服务端判失败，部件图请走国际区。</li>
-              <li><b>回退的边界</b>：只有页面级；任务抽屉开着时在页面上按 Esc 不回退；离开守卫接了动作映射、密钥输入框和手动组装三处草稿。</li>
-              <li><b>文件夹与撤销的边界</b>：文件夹只有一级、一个资产只属一个夹；动作设计台的模板 / 滑杆 / 名称不进撤销历史；「删除本机全部数据」清不掉正在被占用的文件时会留下并记录；静默卸载一律保留数据。</li>
-              <li><b>裙摆保形与面部平滑的边界</b>：裙摆仍没有布料碰撞（0.1.7 起前片随抬腿掀起，走路不再穿出，奔跑的极限帧膝盖仍可能擦到），头发不处理；0.1.26 起 Unity 插件不再自动加裙摆辅助骨，裙装角色先在应用里做「权重整理」；面部平滑填平处的边缘还有些毛糙，肤色范围内的腮红、胡须会被当成皮肤，深肤色角色暂不识别。</li>
-            </ul>
-            <p class="fine" style="margin-top:14px">已知限制：仅 Windows；只完整支持 Unity；手动后处理不处理带骨骼的模型，只有 FBX 的版本要先「补全基础动作（本地）」转成 GLB 再烘焙动作；拼音转写的多音字与超长描述有取舍。完整说明见 <a href="https://github.com/chenyihang98-pixel/Modelwright#验证情况与已知限制">README</a>。</p>
-          </div>
-        </div>
+        <h2>已知问题</h2>
+        <ul class="tight">
+          <li>只有 Windows 版，引擎只接了 Unity。</li>
+          <li>主要在 Unity 6 上测，Unity 2022.3 和团结引擎测得少，遇到问题请提 Issue。</li>
+          <li>腾讯混元的云端动作文件在 Unity 里蒙皮会撕裂，是文件本身的问题。混元绑好骨的角色，用动作设计台的「补全基础动作（本地）」来加动作。</li>
+          <li>动作设计台的动作是程序生成的，不是动捕，做原型和试玩够用；想要更自然的就导入 Mixamo。</li>
+          <li>裙子和头发没有布料模拟，跑起来裙摆可能穿模。</li>
+          <li>带骨骼的模型不能在本地减面和做 LOD。</li>
+        </ul>
+        <p class="fine" style="margin-top:14px">每个版本改了什么，看 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/RELEASE-NOTES.md">更新日志</a>。</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      Modelwright（模匠）0.1.27 · 按 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">最终用户许可协议</a> 授权使用，不是开源软件 · 第三方组件许可见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 问题与反馈：<a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a><br>
-      Tripo、Meshy、腾讯混元、Unity 等名称为其各自权利人的商标，仅用于说明兼容性。
+      模匠 Modelwright · 免费使用，不开源，见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/LICENSE.txt">许可协议</a> · 第三方组件见 <a href="https://github.com/chenyihang98-pixel/Modelwright/blob/main/THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES</a> · 有问题提 <a href="https://github.com/chenyihang98-pixel/Modelwright/issues">Issues</a>
     </div>
   </footer>
 </body>
