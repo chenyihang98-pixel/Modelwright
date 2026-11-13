@@ -6,6 +6,22 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.30 (2026-11-13)
+
+This version is mostly about security. How you use the app stays the same.
+
+**Added**
+- Updates are now checked against a signature: an installer that was swapped is neither downloaded nor installed
+
+**Improved**
+- A .gltf is imported with the textures and .bin files from its own folder only; one that points elsewhere asks you to pack it as a single GLB
+- Custom service addresses no longer accept plain http:// on the internet; an http address on your local network asks once before it is used
+- Changing where the asset library lives asks for one more confirmation, in a system dialog
+- “Erase all data on this computer” removes only the files Modelwright made; anything else you keep in the library folder stays
+- A result file that is too large, an archive that unpacks too large, or a redirect to an unsafe address now stops with the reason
+- The Unity plugin's files are checked before they go into a project; a modified copy is not installed
+- Reference pictures sent to an image service no longer carry the file name from your computer
+
 ## 0.1.29 (2026-11-13)
 
 **Improved**
