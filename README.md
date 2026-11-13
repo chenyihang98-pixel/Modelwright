@@ -135,4 +135,4 @@ Bug 和建议提到 [Issues](https://github.com/chenyihang98-pixel/Modelwright/i
 
 ## 许可
 
-模匠免费使用，不开源，源码不公开，见 [许可协议](LICENSE.txt)（[English](LICENSE-en.txt)）。用到的第三方组件见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。
+模匠免费使用，不开源，源码不公开，见 [许可协议](LICENSE.txt)（[English](LICENSE-en.txt) · [日本語](LICENSE-ja.txt)）。用到的第三方组件见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。
