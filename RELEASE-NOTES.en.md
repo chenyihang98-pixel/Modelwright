@@ -6,6 +6,19 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.29 (2026-11-13)
+
+**Improved**
+- For a rigged character, “Rig & animate” now starts with the motions on your computer, which cost nothing; cloud motions say they cost credits
+- In the simple view, what you changed in the advanced view (no rigging, no local optimisation, saving as a new version of an old asset, custom parameters) is listed in the generate panel, each with a way back
+- The Motion studio says which motions a baked version already has in its file
+- Shortcuts and the uninstall entry made by the English and Japanese installers describe the app in the language you installed
+
+**Fixed**
+- In Japanese, the messages of key tests, dropped pictures, link imports and parameter checks were in English
+- Japanese wording that said the wrong thing: Tripo's sign-up note, the Hunyuan motion hint, Unity's “refresh” written as “update”
+- The language picked in the installer was lost when the settings file happened to be in use during the first start
+
 ## 0.1.28 (2026-11-13)
 
 The Unity plugin is now 0.1.34: press “Upgrade” on the Engine page.
@@ -16,7 +29,7 @@ The Unity plugin is now 0.1.34: press “Upgrade” on the Engine page.
 - Japanese interface. Three installers — Chinese, English, Japanese — and the language you pick while installing is the app's language
 
 **Improved**
-- A character sent to Unity in one click goes as GLB without stopping to ask about the format
+- In the simple view, when the project has a glTF importer, a character sent to Unity in one click goes as GLB without stopping to ask about the format
 - Steadier body when switching between walk and run, starting and stopping
 - Tripo keeps cloud results for 7 days: tasks show the date, and expired ones fall back to the local file
 

@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  <img src="docs/screenshots/02-home.png" alt="Modelwright home screen" width="880">
+  <img src="docs/screenshots/en/02-home.png" alt="Modelwright home screen" width="880">
 </p>
 
 <h1 align="center">Modelwright</h1>
@@ -59,15 +59,15 @@ The installer isn't code-signed, so Windows will stop you once on first run: cli
 - **Asset library**: version history, folders, search, a recycle bin, export to GLB / OBJ / STL / PLY
 - **Batch**: one description per line; jobs queue up for generation, processing and delivery, and survive closing the app
 
-The app speaks Chinese, English and Japanese. The English installer starts it in English; switch any time under Settings → Language & about.
+The app speaks Chinese, English and Japanese. The English installer starts it in English; switch any time under Settings → Language & about. The portable file and the zip are the same for every language and start in the language of Windows.
 
 ## Screenshots
 
 | | |
 |---|---|
-| ![Workspace](docs/screenshots/03-workspace.png) | ![Pre-flight](docs/screenshots/04-generate-preflight.png) |
+| ![Workspace](docs/screenshots/en/03-workspace.png) | ![Pre-flight](docs/screenshots/en/04-generate-preflight.png) |
 | Workspace | Checks and cost before submitting |
-| ![Post-processing](docs/screenshots/05-postprocess.png) | ![Asset library](docs/screenshots/06-assets.png) |
+| ![Post-processing](docs/screenshots/en/05-postprocess.png) | ![Asset library](docs/screenshots/en/06-assets.png) |
 | Local post-processing, before and after | Asset library |
 | ![Rigging and motions](docs/screenshots/08-animation.png) | ![Unity Play mode](docs/screenshots/09-unity-play.png) |
 | Rigging and motions | Play mode in Unity |

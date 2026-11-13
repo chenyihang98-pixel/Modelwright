@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  <img src="docs/screenshots/02-home.png" alt="Modelwright のホーム画面" width="880">
+  <img src="docs/screenshots/ja/02-home.png" alt="Modelwright のホーム画面" width="880">
 </p>
 
 <h1 align="center">Modelwright</h1>
@@ -59,15 +59,15 @@ bilibili に短い動画が 2 本あります（字幕は中国語ですが、�
 - **アセットライブラリ**：バージョン履歴、フォルダー、検索、ごみ箱。GLB / OBJ / STL / PLY に書き出せます
 - **バッチ**：1 行に 1 つ説明を書くだけ。生成・処理・送信はキューで順番に実行され、途中でアプリを閉じても消えません
 
-アプリは日本語・英語・中国語で表示できます。「設定 → 言語とバージョン情報」でいつでも切り替えられます。
+アプリは日本語・英語・中国語で表示できます。「設定 → 言語とバージョン情報」でいつでも切り替えられます。ポータブル版と zip は全言語共通で、初回は Windows の言語で起動します。
 
 ## スクリーンショット
 
 | | |
 |---|---|
-| ![ワークスペース](docs/screenshots/03-workspace.png) | ![送信前のチェック](docs/screenshots/04-generate-preflight.png) |
+| ![ワークスペース](docs/screenshots/ja/03-workspace.png) | ![送信前のチェック](docs/screenshots/ja/04-generate-preflight.png) |
 | ワークスペース | 送信前のチェックと費用 |
-| ![後処理](docs/screenshots/05-postprocess.png) | ![アセットライブラリ](docs/screenshots/06-assets.png) |
+| ![後処理](docs/screenshots/ja/05-postprocess.png) | ![アセットライブラリ](docs/screenshots/ja/06-assets.png) |
 | ローカル後処理（処理前後の比較） | アセットライブラリ |
 | ![リギングとモーション](docs/screenshots/08-animation.png) | ![Unity の Play モード](docs/screenshots/09-unity-play.png) |
 | リギングとモーション | Unity で Play |
