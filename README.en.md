@@ -43,7 +43,7 @@ Grab the latest version from [Releases](https://github.com/chenyihang98-pixel/Mo
 
 | File | |
 |---|---|
-| `Modelwright-Setup-…-x64.exe` | Installer, recommended. Updates itself when a new version is out |
+| `Modelwright-Setup-…-x64-en.exe` | Installer, recommended. Starts in English; updates itself when a new version is out |
 | `Modelwright-Portable-…-x64.exe` | Portable, a single file. Data lives in a `Modelwright-Data` folder next to it, so it can travel on a USB stick |
 | `Modelwright-…-win.zip` | Unzip and run |
 
@@ -59,7 +59,7 @@ The installer isn't code-signed, so Windows will stop you once on first run: cli
 - **Asset library**: version history, folders, search, a recycle bin, export to GLB / OBJ / STL / PLY
 - **Batch**: one description per line; jobs queue up for generation, processing and delivery, and survive closing the app
 
-The UI is Chinese by default. Switch to English under Settings → Language & about.
+The app speaks Chinese, English and Japanese. The English installer starts it in English; switch any time under Settings → Language & about.
 
 ## Screenshots
 

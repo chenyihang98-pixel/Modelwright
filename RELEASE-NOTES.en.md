@@ -6,6 +6,24 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.28 (2026-11-13)
+
+The Unity plugin is now 0.1.34: press “Upgrade” on the Engine page.
+
+**New**
+- Colour fix in Texture: paint on the model to repair wrong colours, no credits needed
+- Simple view: only the common modules and options by default; “Advanced” at the bottom left shows everything
+- Japanese interface. Three installers — Chinese, English, Japanese — and the language you pick while installing is the app's language
+
+**Improved**
+- A character sent to Unity in one click goes as GLB without stopping to ask about the format
+- Steadier body when switching between walk and run, starting and stopping
+- Tripo keeps cloud results for 7 days: tasks show the date, and expired ones fall back to the local file
+
+**Fixed**
+- A model's own motions looked different in the preview and after export
+- In the range, the gun's stock came out of the character's back when aiming and walking backwards
+
 ## 0.1.27 (2026-11-10)
 
 The Unity plugin is now 0.1.32 — click "Upgrade" on the Engine page.

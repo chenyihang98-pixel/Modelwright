@@ -50,6 +50,8 @@ Windows 10 / 11，引擎目前只接了 Unity。
 | `Modelwright-Portable-…-x64.exe` | 便携版，单个文件。数据放在旁边的 `Modelwright-Data` 文件夹，可以装在 U 盘里带走 |
 | `Modelwright-…-win.zip` | 解压就能用 |
 
+安装版有中文、英文、日文三个（英文和日文的文件名带 `-en`、`-ja`），区别只是安装界面和应用一开始用哪种语言。
+
 安装包没买代码签名，第一次运行 Windows 会拦一下，点「更多信息 → 仍要运行」。不放心可以对一下 Release 页里的 SHA-256。
 
 ## 能做什么
