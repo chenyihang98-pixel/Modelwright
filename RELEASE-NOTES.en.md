@@ -6,6 +6,20 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.32 (2026-11-14)
+
+**Improved**
+- Parts plans saved earlier get their reference picture filled in when opened, nothing to redo
+- Part sheets show the price of the chosen service before drawing, and ask first above your limit or when the price is unknown
+- Stopping now finishes the sheet being drawn (“Stop after this one”); a redraw you don’t like can go “Back to the previous one”
+- Part sheets left unfinished last time can “Continue” without being billed again
+
+**Fixed**
+- A character generated from one plain picture stopped in part-wise modelling, saying the plan had no reference picture
+- A part sheet that failed its checks was redrawn on its own and billed again
+- A part sheet being drawn when the app was closed stayed at “drawing” after reopening
+- A parts plan saved from several places at once could lose a sheet that had just been drawn
+
 ## 0.1.31 (2026-11-14)
 
 This update fixes several security issues, strengthens data protection and runtime safety, and improves error handling and stability. How you use the app stays the same.
