@@ -6,12 +6,18 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.31 (2026-11-14)
+
+This update fixes several security issues, strengthens data protection and runtime safety, and improves error handling and stability. How you use the app stays the same.
+
+In 0.1.30 I wrote that a swapped installer “is neither downloaded nor installed”. That was not accurate. What holds is: an update that fails the signature and integrity checks is not installed.
+
 ## 0.1.30 (2026-11-13)
 
 This version is mostly about security. How you use the app stays the same.
 
 **Added**
-- Updates are now checked against a signature: an installer that was swapped is neither downloaded nor installed
+- Updates are now checked against a signature: an update that fails the signature and integrity checks is not installed
 
 **Improved**
 - A .gltf is imported with the textures and .bin files from its own folder only; one that points elsewhere asks you to pack it as a single GLB
