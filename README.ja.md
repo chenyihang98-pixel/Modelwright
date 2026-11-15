@@ -30,7 +30,7 @@ Windows 10 / 11 対応。対応エンジンは今のところ Unity のみです
 
 ## デモ
 
-![Modelwright で生成したキャラクターが Unity で走っている様子](docs/unity-run.gif)
+![Modelwright で作ったキャラクターが Unity で歩いている様子](docs/demo-unity-run.webp)
 
 第 3 話は日本語字幕版を YouTube に置いています。
 
@@ -74,8 +74,8 @@ bilibili には中国語字幕の短い動画が 3 本あります（ほとん�
 | ワークスペース | 送信前のチェックと費用 |
 | ![後処理](docs/screenshots/ja/05-postprocess.png) | ![アセットライブラリ](docs/screenshots/ja/06-assets.png) |
 | ローカル後処理（処理前後の比較） | アセットライブラリ |
-| ![リギングとモーション](docs/screenshots/08-animation.png) | ![Unity の Play モード](docs/screenshots/09-unity-play.png) |
-| リギングとモーション | Unity で Play |
+| ![モーションスタジオ](docs/screenshots/ja/08-animation.png) | ![射撃場](docs/screenshots/ja/10-range.png) |
+| モーションスタジオ：テンプレートを選ぶだけで動く | 射撃場：銃を持たせてリグとモーションを確認 |
 
 ## はじめかた
 

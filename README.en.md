@@ -30,7 +30,7 @@ Windows 10 / 11. Unity is the only engine supported for now.
 
 ## Demo
 
-![A character generated with Modelwright running in Unity](docs/unity-run.gif)
+![A character made with Modelwright walking in Unity](docs/demo-unity-run.webp)
 
 Three short videos on bilibili (Chinese captions, mostly screen recording):
 
@@ -70,8 +70,8 @@ The app speaks Chinese, English and Japanese. The English installer starts it in
 | Workspace | Checks and cost before submitting |
 | ![Post-processing](docs/screenshots/en/05-postprocess.png) | ![Asset library](docs/screenshots/en/06-assets.png) |
 | Local post-processing, before and after | Asset library |
-| ![Rigging and motions](docs/screenshots/08-animation.png) | ![Unity Play mode](docs/screenshots/09-unity-play.png) |
-| Rigging and motions | Play mode in Unity |
+| ![Motion studio](docs/screenshots/en/08-animation.png) | ![Range](docs/screenshots/en/10-range.png) |
+| Motion studio: pick a template and it moves | Range: give the character a gun and try the rig |
 
 ## Getting started
 

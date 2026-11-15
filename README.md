@@ -78,10 +78,12 @@ Windows 10 / 11，引擎目前只接了 Unity。
 | 工作台 | 提交前的检查和费用 |
 | ![后处理](docs/screenshots/05-postprocess.png) | ![资产库](docs/screenshots/06-assets.png) |
 | 本地后处理，前后对比 | 资产库 |
-| ![绑骨与动作](docs/screenshots/08-animation.png) | ![Unity Play 模式](docs/screenshots/09-unity-play.png) |
-| 绑骨和动作 | 进 Unity 后按 Play |
+| ![动作设计台](docs/screenshots/08-animation.png) | ![靶场](docs/screenshots/10-range.png) |
+| 动作设计台：挑模板就能动 | 靶场：拿上枪试试骨骼和动作 |
 
-![星璇在 Unity 里奔跑](docs/unity-run.gif)
+![白发红瞳在 Unity 里走路](docs/demo-unity-run.webp)
+
+<sub>进 Unity 后按 Play，角色直接能走能跑。</sub>
 
 ## 上手
 
