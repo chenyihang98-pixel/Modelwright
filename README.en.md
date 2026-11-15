@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Download</a> ·
-  <a href="https://www.bilibili.com/video/BV1YqpZ6kEw4">Demo video</a> ·
+  <a href="https://www.bilibili.com/video/BV1aMsH6CEe3">Demo video</a> ·
   <a href="RELEASE-NOTES.en.md">Changelog</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/en/">Website</a>
 </p>
@@ -32,8 +32,9 @@ Windows 10 / 11. Unity is the only engine supported for now.
 
 ![A character generated with Modelwright running in Unity](docs/unity-run.gif)
 
-Two short videos on bilibili (Chinese captions, mostly screen recording):
+Three short videos on bilibili (Chinese captions, mostly screen recording):
 
+- [Episode 3](https://www.bilibili.com/video/BV1aMsH6CEe3) — one picture to a 3D character that runs and shoots: every button from generating to Unity
 - [Episode 2](https://www.bilibili.com/video/BV1YqpZ6kEw4) — rig a character, add three motions, send it into Unity
 - [Episode 1](https://www.bilibili.com/video/BV1VMHU6mEQt) — a 192 × 208 sprite becomes a 3D character standing in a Unity scene
 

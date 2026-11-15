@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">下载</a> ·
-  <a href="https://www.bilibili.com/video/BV1YqpZ6kEw4">演示视频</a> ·
+  <a href="https://www.bilibili.com/video/BV1aMsH6CEe3">演示视频</a> ·
   <a href="RELEASE-NOTES.md">更新日志</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/">介绍页</a>
 </p>
@@ -29,6 +29,10 @@ AI 生成的模型拿到手一般不能直接用：面数太高，没有 LOD 和
 Windows 10 / 11，引擎目前只接了 Unity。
 
 ## 演示
+
+**第三集：一张图做出能跑能开枪的 3D 角色**　生成、贴图、绑骨、动作、进 Unity，按钮从头讲一遍
+
+[![一张立绘，做成自制游戏的主角](docs/bilibili-cover-ep3.png)](https://www.bilibili.com/video/BV1aMsH6CEe3)
 
 **第二集：把大肥鱼带进三次元**　绑骨、三个动作、一键进 Unity
 

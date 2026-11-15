@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">ダウンロード</a> ·
-  <a href="https://www.bilibili.com/video/BV1YqpZ6kEw4">デモ動画</a> ·
+  <a href="https://www.bilibili.com/video/BV1aMsH6CEe3">デモ動画</a> ·
   <a href="RELEASE-NOTES.ja.md">更新履歴</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/ja/">紹介ページ</a>
 </p>
@@ -32,8 +32,9 @@ Windows 10 / 11 対応。対応エンジンは今のところ Unity のみです
 
 ![Modelwright で生成したキャラクターが Unity で走っている様子](docs/unity-run.gif)
 
-bilibili に短い動画が 2 本あります（字幕は中国語ですが、ほとんどが画面収録です）。
+bilibili に短い動画が 3 本あります（字幕は中国語ですが、ほとんどが画面収録です）。
 
+- [第 3 話](https://www.bilibili.com/video/BV1aMsH6CEe3)　1 枚の絵から、走って撃てる 3D キャラクターへ。生成から Unity まで、ボタンを順に紹介
 - [第 2 話](https://www.bilibili.com/video/BV1YqpZ6kEw4)　リギングして 3 つのモーションを付け、Unity へ送るまで
 - [第 1 話](https://www.bilibili.com/video/BV1VMHU6mEQt)　192 × 208 のスプライト 1 枚が、3D になって Unity のシーンに立つまで
 
