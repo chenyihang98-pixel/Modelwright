@@ -6,6 +6,16 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.33 (2026-11-15)
+
+**Improved**
+- Humanoid characters made from a sentence are asked for knees and toes pointing forward and hands off the body and skirt, so fewer come out knock-kneed after rigging
+- Pre-flight now reminds you to look at the legs and feet yourself, and whether the hands touch the skirt
+- Waves you made earlier stay as they are; to switch, “Load to adjust” it in the “Motion studio”, set “Motion formulas” to “New” and save
+
+**Fixed**
+- The wave showed the palm to the side and looked like a push (the model needs finger joints)
+
 ## 0.1.32 (2026-11-14)
 
 **Improved**
