@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Download</a> ·
-  <a href="https://www.bilibili.com/video/BV1aMsH6CEe3">Demo video</a> ·
+  <a href="https://youtu.be/SW_TjMS2_e4">Demo video</a> ·
   <a href="RELEASE-NOTES.en.md">Changelog</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/en/">Website</a>
 </p>
@@ -31,6 +31,10 @@ Windows 10 / 11. Unity is the only engine supported for now.
 ## Demo
 
 ![A character made with Modelwright walking in Unity](docs/demo-unity-run.webp)
+
+Episode 3 has an English-captioned version on YouTube:
+
+- [Episode 3 (English captions)](https://youtu.be/SW_TjMS2_e4) — one picture to a 3D character that runs and shoots: every button from generating to Unity
 
 Three short videos on bilibili (Chinese captions, mostly screen recording):
 
