@@ -107,6 +107,8 @@ Unity 2022.3、Unity 6、Tuanjie に対応。Built-in / URP / HDRP のどれで�
 
 プラグインなしでも送信できます。その場合はファイルが `Assets/Modelwright/` に書き込まれ、あとは Unity の標準インポートに任せます。プロジェクトに glTF インポーターがないときは、送信時に glTFast を入れるかどうか聞かれます（無料、おすすめ）。
 
+Unity を使わない遊び方もあります。ブラウザーで遊べる小さなゲーム [mw-playground](https://github.com/chenyihang98-pixel/mw-playground) を別に作りました。Modelwright から書き出した GLB を読み込めば、主人公にも、仲間にも、守衛にもなります。
+
 ## 既知の問題
 
 - Windows 版のみ。対応エンジンは Unity だけです

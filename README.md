@@ -115,6 +115,8 @@ Windows 10 / 11，引擎目前只接了 Unity。
 
 没装插件也能发送，只是把文件写进 `Assets/Modelwright/`，剩下的交给 Unity 默认处理。工程里没有 glTF 导入器时，发送会问要不要装 glTFast（免费，推荐装）。
 
+角色不进 Unity 也能玩。我另外做了个在浏览器里玩的小游戏 [mw-playground](https://github.com/chenyihang98-pixel/mw-playground/blob/main/README.zh.md)，把模匠导出的 GLB 读进去，就能当主角、同伴或守卫。
+
 ## 已知问题
 
 - 只有 Windows 版，引擎只接了 Unity

@@ -107,6 +107,8 @@ Add your project on the Engine page, click "Install plugin", and from then on ju
 
 Sending works without the plugin too; the files simply land in `Assets/Modelwright/` and Unity does its default import. If the project has no glTF importer, you'll be asked whether to install glTFast (free, recommended).
 
+Unity isn't the only place to use a character. I also made a small browser game, [mw-playground](https://github.com/chenyihang98-pixel/mw-playground/blob/main/README.en.md): load a GLB exported from Modelwright and it becomes the player character, a companion or a guard.
+
 ## Known issues
 
 - Windows only, Unity only
