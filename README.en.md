@@ -135,4 +135,4 @@ Bugs and ideas go to [Issues](https://github.com/chenyihang98-pixel/Modelwright/
 
 ## License
 
-Modelwright is free to use. It is not open source and the source code is not public — see the [license](LICENSE-en.txt). Third-party components are listed in [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
+Modelwright is free to use; see the [license](LICENSE-en.txt) for details. Third-party components are listed in [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).

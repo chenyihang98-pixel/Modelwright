@@ -135,4 +135,4 @@ Unity を使わない遊び方もあります。ブラウザーで遊べる小�
 
 ## ライセンス
 
-Modelwright は無料で使えます。オープンソースではなく、ソースコードは公開していません。詳しくは [ライセンス](LICENSE-ja.txt) をご覧ください。同梱しているサードパーティ製コンポーネントは [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt) にまとめています。
+Modelwright は無料で使えます。詳しくは [ライセンス](LICENSE-ja.txt) をご覧ください。同梱しているサードパーティ製コンポーネントは [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt) にまとめています。
