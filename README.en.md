@@ -32,8 +32,9 @@ Windows 10 / 11. Unity is the only engine supported for now.
 
 ![A character made with Modelwright walking in Unity](docs/demo-unity-run.webp)
 
-Episode 3 has an English-captioned version on YouTube:
+In English on YouTube:
 
+- [How to connect Unity](https://youtu.be/VMNR08FmYWk) — from a new project to connecting, sending and updating a model
 - [Episode 3 (English captions)](https://youtu.be/SW_TjMS2_e4) — one picture to a 3D character that runs and shoots: every button from generating to Unity
 
 Three short videos on bilibili (Chinese captions, mostly screen recording):

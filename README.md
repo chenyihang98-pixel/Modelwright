@@ -30,6 +30,10 @@ Windows 10 / 11，引擎目前只接了 Unity。
 
 ## 演示
 
+**教程：如何连接 Unity**　从新建项目到连接、发送、更新模型，一步步走一遍
+
+[![如何连接 Unity](docs/bilibili-cover-unity.png)](https://www.bilibili.com/video/BV1xfypzME9g)
+
 **第三集：一张图做出能跑能开枪的 3D 角色**　生成、贴图、绑骨、动作、进 Unity，按钮从头讲一遍
 
 [![一张立绘，做成自制游戏的主角](docs/bilibili-cover-ep3.png)](https://www.bilibili.com/video/BV1aMsH6CEe3)

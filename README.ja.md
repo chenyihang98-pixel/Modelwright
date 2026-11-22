@@ -32,8 +32,9 @@ Windows 10 / 11 対応。対応エンジンは今のところ Unity のみです
 
 ![Modelwright で作ったキャラクターが Unity で歩いている様子](docs/demo-unity-run.webp)
 
-第 3 話は日本語字幕版を YouTube に置いています。
+YouTube に日本語版を置いています。
 
+- [Unity との接続方法](https://youtu.be/6oAeFFkDSaA)　新規プロジェクトから接続、送信、モデルの更新まで（画面は英語 UI）
 - [第 3 話（日本語字幕）](https://youtu.be/fLYk25TaxHo)　1 枚の立ち絵から、走って撃てる 3D キャラクターへ。生成から Unity まで、ボタンを順に紹介
 
 bilibili には中国語字幕の短い動画が 3 本あります（ほとんどが画面収録です）。

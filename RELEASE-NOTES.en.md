@@ -6,6 +6,24 @@
 
 The installer updates itself. For the portable build and the zip, download the new version from [Releases](https://github.com/chenyihang98-pixel/Modelwright/releases).
 
+## 0.1.35 (2026-11-22)
+
+This version follows two provider changes: Volcengine Ark switches Seedream 4.5, 4.0 and 5.0 Lite off on 24 November at 14:00 Beijing time, so settings that used them move to Seedream 5.0 Pro and are billed at its price; the Tripo versions retired on 1 December move to newer ones by themselves.
+
+**Added**
+- “Connect this project”: choose the folder you keep your games in; Modelwright finds the project, adds its tools, opens Unity and connects
+- Before a job runs it says which project the model goes to; “Make models first” keeps results in the library only
+- A model sent while Unity was closed is imported and placed once Unity connects, as long as Modelwright is running
+- Recent changes and provider notices show at start; the Notices button in the top bar opens them any time
+- New models: Seedream 5.5, GPT-6.2 Sol / Astra, Qwen4-Max, Claude Haiku 5.5
+
+**Improved**
+- An older plugin in a project is upgraded before a send; one you changed is left alone
+
+**Fixed**
+- Sending the same model twice in a row could let the earlier send place the later one’s files
+- After a project folder was moved or deleted, a model could quietly go to another project
+
 ## 0.1.33 (2026-11-15)
 
 **Improved**
