@@ -11,7 +11,7 @@
 <p align="center"><b>One image or one sentence in, a 3D model out — sent to Unity in one click.</b></p>
 
 <p align="center">
-  <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">Download</a> ·
+  <a href="https://chenyihang98-pixel.github.io/Modelwright/en/">Download</a> ·
   <a href="https://youtu.be/SW_TjMS2_e4">Demo video</a> ·
   <a href="RELEASE-NOTES.en.md">Changelog</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/en/">Website</a>

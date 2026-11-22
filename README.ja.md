@@ -11,7 +11,7 @@
 <p align="center"><b>画像 1 枚か一文から 3D モデルを生成し、ワンクリックで Unity へ。</b></p>
 
 <p align="center">
-  <a href="https://github.com/chenyihang98-pixel/Modelwright/releases/latest">ダウンロード</a> ·
+  <a href="https://chenyihang98-pixel.github.io/Modelwright/ja/">ダウンロード</a> ·
   <a href="https://youtu.be/fLYk25TaxHo">デモ動画</a> ·
   <a href="RELEASE-NOTES.ja.md">更新履歴</a> ·
   <a href="https://chenyihang98-pixel.github.io/Modelwright/ja/">紹介ページ</a>
